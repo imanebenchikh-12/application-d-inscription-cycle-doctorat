@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CEDoc USMBA — Portail Officiel d'Inscription & Réinscription Doctorale</title>
+  <title>CEDoc USMBA — Portail Officiel d'Inscription Doctorale</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,31 +17,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   
   <style>
-    body { 
-      font-family: 'Inter', sans-serif; 
-    }
-    .font-mono { 
-      font-family: 'JetBrains Mono', monospace; 
-    }
-    [v-cloak] { 
-      display: none !important; 
-    }
-    .custom-scrollbar::-webkit-scrollbar { 
-      width: 6px; 
-      height: 6px; 
-    }
-    .custom-scrollbar::-webkit-scrollbar-track { 
-      background: #f1f5f9; 
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb { 
-      background: #cbd5e1; 
-      border-radius: 4px; 
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover { 
-      background: #94a3b8; 
-    }
+    body { font-family: 'Inter', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    [v-cloak] { display: none !important; }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
-    /* Animation laser pour le Scanner OCR */
     @keyframes scanLaser {
       0% { top: 0%; opacity: 0.8; }
       50% { top: 92%; opacity: 1; }
@@ -54,20 +36,14 @@
       height: 3px;
       background: linear-gradient(90deg, rgba(59,130,246,0) 0%, rgba(16,185,129,1) 50%, rgba(59,130,246,0) 100%);
       box-shadow: 0 0 18px #10b981, 0 0 8px #3b82f6;
-      animation: scanLaser 2.2s infinite ease-in-out;
-    }
-
-    /* Effets de surbrillance */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      animation: scanLaser 2s infinite ease-in-out;
     }
   </style>
 </head>
 <body class="h-full text-slate-800 antialiased selection:bg-indigo-500 selection:text-white flex flex-col">
   <div id="app" v-cloak class="min-h-screen flex flex-col flex-grow">
 
-    <!-- Top Announcement Ticker Banner -->
+    <!-- Top Banner -->
     <div class="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 text-white text-xs py-2 px-4 border-b border-indigo-800/40 shadow-inner">
       <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
         <div class="flex items-center space-x-2.5">
@@ -75,15 +51,12 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
           </span>
-          <span class="font-semibold tracking-wide">Campagne Nationale d'Inscription Doctorale {{ anneeUniversitaire }} (Arrêté n° 1371.07)</span>
+          <span class="font-semibold tracking-wide">Campagne Officielle d'Inscription Doctorale USMBA (Arrêté n° 1371.07)</span>
         </div>
         <div class="flex items-center space-x-4 text-indigo-200 text-[11px]">
-          <span class="flex items-center space-x-1">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-            <span>CEDoc — USMBA Fès</span>
-          </span>
+          <span>🏛️ CEDoc USMBA Fès</span>
           <span>•</span>
-          <span class="text-emerald-300 font-mono">Module OCR & Rules API v4.2 Actifs</span>
+          <span class="text-emerald-300 font-mono">Module OCR & API REST Moteur v4.2</span>
         </div>
       </div>
     </div>
@@ -92,7 +65,6 @@
     <header class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30">
       <div class="max-w-7xl mx-auto px-4 py-3.5 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
         
-        <!-- Logo & Titre -->
         <div class="flex items-center space-x-4">
           <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 via-indigo-700 to-blue-800 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-indigo-200 border border-indigo-400/20 shrink-0">
             🎓
@@ -103,25 +75,24 @@
               <span class="bg-indigo-100 text-indigo-800 text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">Portail National</span>
             </div>
             <p class="text-xs text-slate-500 font-medium">
-              Centre d'Études Doctorales — Gestion Dématérialisée des Inscriptions & Réinscriptions
+              Gestion Dématérialisée des Inscriptions & Validation des Sujets
             </p>
           </div>
         </div>
 
-        <!-- Role Selector (Candidat vs Admin) -->
         <div class="flex items-center space-x-3">
           <div class="bg-slate-100 p-1 rounded-xl border border-slate-200 flex items-center text-xs font-semibold">
             <button 
-              @click="roleVue = 'candidat'" 
-              :class="roleVue === 'candidat' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'" 
-              class="px-3.5 py-1.5 rounded-lg transition flex items-center space-x-1.5">
+              @click="basculerRole('candidat')" 
+              :class="roleVue === 'candidat' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900'" 
+              class="px-4 py-2 rounded-lg transition flex items-center space-x-2">
               <span>👤</span>
               <span>Espace Candidat</span>
             </button>
             <button 
-              @click="roleVue = 'admin'" 
-              :class="roleVue === 'admin' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-600 hover:text-slate-900'" 
-              class="px-3.5 py-1.5 rounded-lg transition flex items-center space-x-1.5">
+              @click="basculerRole('admin')" 
+              :class="roleVue === 'admin' ? 'bg-indigo-600 text-white shadow-md font-bold' : 'text-slate-600 hover:text-slate-900'" 
+              class="px-4 py-2 rounded-lg transition flex items-center space-x-2">
               <span>🏛️</span>
               <span>Scolarité / Admin</span>
             </button>
@@ -130,7 +101,7 @@
       </div>
     </header>
 
-    <!-- Navigation Principale par Onglets -->
+    <!-- Navigation Onglets -->
     <div class="bg-white border-b border-slate-200 shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav class="flex space-x-2 md:space-x-4 overflow-x-auto custom-scrollbar py-2">
@@ -148,15 +119,7 @@
             :class="ongletActif === 'reinscription' ? 'border-indigo-600 text-indigo-600 font-bold bg-indigo-50/60' : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'"
             class="py-3 px-4 border-b-2 text-xs md:text-sm rounded-xl transition flex items-center space-x-2 whitespace-nowrap">
             <span class="text-base">🔄</span>
-            <span>Demande de Réinscription (2e à 6e Année)</span>
-          </button>
-
-          <button 
-            @click="ongletActif = 'catalogue'"
-            :class="ongletActif === 'catalogue' ? 'border-indigo-600 text-indigo-600 font-bold bg-indigo-50/60' : 'border-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-50'"
-            class="py-3 px-4 border-b-2 text-xs md:text-sm rounded-xl transition flex items-center space-x-2 whitespace-nowrap">
-            <span class="text-base">📚</span>
-            <span>Catalogue des Sujets & Labos</span>
+            <span>Demande de Réinscription</span>
           </button>
 
           <button 
@@ -171,9 +134,9 @@
             v-if="roleVue === 'admin'"
             @click="ongletActif = 'scolarite'"
             :class="ongletActif === 'scolarite' ? 'border-purple-600 text-purple-700 font-bold bg-purple-50' : 'border-transparent text-purple-600 hover:text-purple-900 hover:bg-purple-50/50'"
-            class="py-3 px-4 border-b-2 text-xs md:text-sm rounded-xl transition flex items-center space-x-2 whitespace-nowrap">
+            class="py-3 px-4 border-b-2 text-xs md:text-sm rounded-xl transition flex items-center space-x-2 whitespace-nowrap animate-pulse">
             <span class="text-base">⚡</span>
-            <span>Validation Scolarité (Workflow UML)</span>
+            <span>Dashboard Scolarité (Workflow Admin)</span>
           </button>
         </nav>
       </div>
@@ -183,339 +146,266 @@
     <div class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 sm:px-6 lg:px-8">
 
       <!-- ================================================================= -->
-      <!-- ONGLET 1 : PREMIÈRE INSCRIPTION (FORMULAIRE COMPLET EN 4 ÉTAPES)  -->
+      <!-- ONGLET 1 : PREMIÈRE INSCRIPTION (5 ÉTAPES STRUCTURÉES)           -->
       <!-- ================================================================= -->
       <main v-if="ongletActif === 'premiere'" class="space-y-6">
         
-        <!-- Stepper Visual Progress -->
+        <!-- Stepper Visual Progress Bar -->
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
           <div class="flex justify-between items-center mb-4">
-            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Avancement de la Candidature</span>
-            <span class="text-xs font-extrabold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">Étape {{ etapeForm }} sur 4</span>
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Avancement du Dossier</span>
+            <span class="text-xs font-extrabold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">Étape {{ etapeForm }} sur 5</span>
           </div>
           
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-bold">
-            <button @click="etapeForm = 1" :class="etapeForm === 1 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200 ring-2 ring-indigo-600 ring-offset-2' : (etapeForm > 1 ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-slate-100 text-slate-500')" class="p-3 rounded-xl transition text-left flex items-center space-x-3">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" :class="etapeForm === 1 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">1</span>
-              <span class="truncate">1. Identité & OCR Scan</span>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-xs font-bold">
+            <button @click="etapeForm = 1" :class="etapeForm === 1 ? 'bg-indigo-600 text-white shadow-md' : (etapeForm > 1 ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-slate-100 text-slate-500')" class="p-2.5 rounded-xl transition text-left flex items-center space-x-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black" :class="etapeForm === 1 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">1</span>
+              <span class="truncate">1. Identité & Scan</span>
             </button>
 
-            <button @click="etapeForm = 2" :class="etapeForm === 2 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200 ring-2 ring-indigo-600 ring-offset-2' : (etapeForm > 2 ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-slate-100 text-slate-500')" class="p-3 rounded-xl transition text-left flex items-center space-x-3">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" :class="etapeForm === 2 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">2</span>
-              <span class="truncate">2. Diplôme d'Accès (D2)</span>
+            <button @click="etapeForm = 2" :class="etapeForm === 2 ? 'bg-indigo-600 text-white shadow-md' : (etapeForm > 2 ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-slate-100 text-slate-500')" class="p-2.5 rounded-xl transition text-left flex items-center space-x-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black" :class="etapeForm === 2 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">2</span>
+              <span class="truncate">2. Diplôme (D2)</span>
             </button>
 
-            <button @click="etapeForm = 3" :class="etapeForm === 3 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200 ring-2 ring-indigo-600 ring-offset-2' : (etapeForm > 3 ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-slate-100 text-slate-500')" class="p-3 rounded-xl transition text-left flex items-center space-x-3">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" :class="etapeForm === 3 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">3</span>
-              <span class="truncate">3. Spécialité & Sujets</span>
+            <button @click="etapeForm = 3" :class="etapeForm === 3 ? 'bg-indigo-600 text-white shadow-md' : (etapeForm > 3 ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-slate-100 text-slate-500')" class="p-2.5 rounded-xl transition text-left flex items-center space-x-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black" :class="etapeForm === 3 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">3</span>
+              <span class="truncate">3. Spécialité</span>
             </button>
 
-            <button @click="etapeForm = 4" :class="etapeForm === 4 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200 ring-2 ring-indigo-600 ring-offset-2' : 'bg-slate-100 text-slate-500'" class="p-3 rounded-xl transition text-left flex items-center space-x-3">
-              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" :class="etapeForm === 4 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">4</span>
-              <span class="truncate">4. Pièces & Soumission</span>
+            <button @click="validerEtPasserAuxSujets" :class="etapeForm === 4 ? 'bg-indigo-600 text-white shadow-md' : (etapeForm > 4 ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'bg-slate-100 text-slate-500')" class="p-2.5 rounded-xl transition text-left flex items-center space-x-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black" :class="etapeForm === 4 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">4</span>
+              <span class="truncate">4. Sujets Filtrés</span>
+            </button>
+
+            <button @click="etapeForm = 5" :class="etapeForm === 5 ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 text-slate-500'" class="p-2.5 rounded-xl transition text-left flex items-center space-x-2">
+              <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black" :class="etapeForm === 5 ? 'bg-white text-indigo-600' : 'bg-slate-200 text-slate-700'">5</span>
+              <span class="truncate">5. Soumission</span>
             </button>
           </div>
         </div>
 
-        <!-- Form Main Card -->
+        <!-- Form Card Container -->
         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
           
           <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
             <div>
               <h2 class="text-base md:text-lg font-bold text-slate-900">
-                <span v-if="etapeForm === 1">🪪 Étape 1 : Auto-remplissage via Scan OCR (CIN / Carte Étudiant)</span>
-                <span v-if="etapeForm === 2">🎓 Étape 2 : Éligibilité Académique & Diplôme d'Accès (Règle D2)</span>
-                <span v-if="etapeForm === 3">🔬 Étape 3 : Spécialité & Selection Dynamique du Sujet de Thèse</span>
-                <span v-if="etapeForm === 4">📁 Étape 4 : Dépose des Pièces Justificatives & Validation Finale</span>
+                <span v-if="etapeForm === 1">🪪 Étape 1 : Informations Personnelles & Scan OCR (Carte CIN / Étudiant)</span>
+                <span v-if="etapeForm === 2">🎓 Étape 2 : Éligibilité du Diplôme d'Accès (Contrôle Règle D2)</span>
+                <span v-if="etapeForm === 3">🎯 Étape 3 : Choix de la Spécialité Académique</span>
+                <span v-if="etapeForm === 4">🔬 Étape 4 : Sélection du Sujet de Thèse (Filtré pour : {{ specialiteSelectionneeObj.nom }})</span>
+                <span v-if="etapeForm === 5">📁 Étape 5 : Dépose des Pièces Justificatives & Validation API REST</span>
               </h2>
-              <p class="text-xs text-slate-500 mt-0.5">Scannez votre carte pour remplir automatiquement vos coordonnées</p>
             </div>
           </div>
 
           <div class="p-6 md:p-8 space-y-6">
 
-            <!-- ÉTAPE 1 : SCAN OCR CARTE NATIONALE / CARTE ETUDIANT -->
+            <!-- ÉTAPE 1 : MODULE SCAN OCR -->
             <div v-if="etapeForm === 1" class="space-y-6">
-
-              <!-- Module OCR Scanner Display Box -->
+              
               <div class="relative bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-900 text-white p-6 md:p-8 rounded-2xl shadow-xl overflow-hidden border-2 border-indigo-500/50">
-                
-                <!-- Laser line animation when scanning -->
                 <div v-if="ocrEnCours" class="scan-laser-line"></div>
 
                 <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
                   <div class="flex items-start space-x-4">
-                    <div class="w-16 h-16 bg-indigo-600/30 border border-indigo-400/40 rounded-2xl flex items-center justify-center text-4xl shadow-inner shrink-0">
+                    <div class="w-16 h-16 bg-indigo-600/30 border border-indigo-400/40 rounded-2xl flex items-center justify-center text-4xl shrink-0">
                       🪪
                     </div>
                     <div>
                       <div class="flex items-center space-x-2">
                         <h3 class="text-base md:text-lg font-extrabold text-white">Scanner la Carte Nationale (CIN) ou Carte d'Étudiant</h3>
-                        <span class="bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded border border-emerald-500/30 animate-pulse">OCR Auto-Fill</span>
+                        <span class="bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded border border-emerald-500/30 animate-pulse">OCR Direct</span>
                       </div>
                       <p class="text-xs text-indigo-200 mt-1.5 max-w-xl leading-relaxed">
-                        Pour éviter la saisie manuelle, importez ou scannez une photo claire de votre <strong>Carte Nationale (CIN)</strong> ou <strong>Carte d'Étudiant</strong>. Notre algorithme OCR extraira le CNE, CIN, Nom, Prénom, Email, Téléphone et Date de naissance automatiquement !
+                        Importez la photo de votre carte. Le moteur OCR extraira automatiquement le CNE, CIN, Nom, Prénom, Email, Téléphone et Date de Naissance !
                       </p>
                     </div>
                   </div>
 
                   <div class="shrink-0 w-full md:w-auto text-center space-y-2">
-                    <label class="cursor-pointer bg-gradient-to-r from-indigo-500 via-blue-600 to-indigo-600 hover:from-indigo-600 hover:to-blue-700 text-white text-xs font-extrabold py-4 px-8 rounded-xl transition shadow-xl shadow-indigo-500/30 inline-flex items-center justify-center space-x-3 w-full md:w-auto border border-indigo-300/40 hover:scale-105 transform">
+                    <label class="cursor-pointer bg-gradient-to-r from-indigo-500 via-blue-600 to-indigo-600 hover:from-indigo-600 hover:to-blue-700 text-white text-xs font-extrabold py-4 px-8 rounded-xl transition shadow-xl inline-flex items-center justify-center space-x-3 w-full md:w-auto border border-indigo-300/40">
                       <span class="text-xl">📷</span>
-                      <span>Scanner / Importer la Carte</span>
+                      <span>Scanner la Carte (CIN / Étudiant)</span>
                       <input type="file" accept="image/*" class="hidden" @change="scannerCarteOCR" />
                     </label>
-                    <p class="text-[10px] text-indigo-300/80 font-mono">Formats acceptés : JPG, PNG, JPEG</p>
                   </div>
                 </div>
 
-                <!-- Progress Bar during OCR processing -->
                 <div v-if="ocrEnCours" class="mt-6 pt-4 border-t border-indigo-800/60 space-y-2">
                   <div class="flex justify-between text-xs text-indigo-200 font-mono">
                     <span>🔍 Extraction des données visuelles via TessData Engine OCR...</span>
                     <span>{{ ocrProgres }}%</span>
                   </div>
-                  <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden border border-indigo-700/50">
-                    <div class="bg-gradient-to-r from-indigo-400 via-emerald-400 to-blue-400 h-2.5 transition-all duration-300 rounded-full" :style="{ width: ocrProgres + '%' }"></div>
+                  <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                    <div class="bg-gradient-to-r from-indigo-400 to-emerald-400 h-2.5 transition-all duration-300" :style="{ width: ocrProgres + '%' }"></div>
                   </div>
                 </div>
 
-                <!-- Visual Badge when OCR is completed -->
                 <div v-if="carteScanneNom" class="mt-4 p-3 bg-indigo-900/60 rounded-xl border border-indigo-700 flex items-center justify-between text-xs">
-                  <div class="flex items-center space-x-3">
-                    <span class="text-emerald-400 font-bold">✓ Carte Importée :</span>
-                    <span class="text-indigo-200 font-mono text-[11px]">{{ carteScanneNom }}</span>
-                  </div>
-                  <span class="bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded text-[10px] font-bold">Données civiles extraites</span>
+                  <span class="text-emerald-400 font-bold">✓ Carte extraite : {{ carteScanneNom }}</span>
+                  <span class="bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded text-[10px] font-bold">Données remplies</span>
                 </div>
               </div>
 
-              <!-- Form Inputs Pre-filled by OCR -->
+              <!-- Inputs Pre-filled by OCR -->
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">CNE / Code MASSAR *</label>
-                  <input v-model="form.cne" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-mono font-bold bg-slate-50 focus:bg-white transition" placeholder="ex: N130098765" />
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">CNE / Code MASSAR *</label>
+                  <input v-model="form.cne" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-mono font-bold bg-slate-50 focus:bg-white" placeholder="N130098765" />
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">CIN (Carte d'Identité Nationale) *</label>
-                  <input v-model="form.cin" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-mono font-bold bg-slate-50 focus:bg-white transition" placeholder="ex: CD789123" />
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">CIN (Carte Nationale) *</label>
+                  <input v-model="form.cin" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-mono font-bold bg-slate-50 focus:bg-white" placeholder="CD789123" />
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Nom de famille *</label>
-                  <input v-model="form.nom" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-semibold" placeholder="ex: EL MANSARI" />
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Nom de famille *</label>
+                  <input v-model="form.nom" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl text-sm font-semibold" placeholder="EL MANSARI" />
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Prénom *</label>
-                  <input v-model="form.prenom" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-semibold" placeholder="ex: Youssef" />
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Prénom *</label>
+                  <input v-model="form.prenom" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl text-sm font-semibold" placeholder="Youssef" />
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Adresse Email Universitaire *</label>
-                  <input v-model="form.email" type="email" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-medium" placeholder="youssef.elmansari@usmba.ac.ma" />
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Email Universitaire *</label>
+                  <input v-model="form.email" type="email" class="w-full p-3.5 border border-slate-300 rounded-xl text-sm" placeholder="youssef.elmansari@usmba.ac.ma" />
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Numéro de Téléphone *</label>
-                  <input v-model="form.telephone" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-medium" placeholder="+212 6 61 23 45 67" />
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Date de Naissance *</label>
-                  <input v-model="form.dateNaissance" type="date" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-medium" />
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Ville de Résidence *</label>
-                  <input v-model="form.ville" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-medium" placeholder="ex: Fès" />
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Téléphone *</label>
+                  <input v-model="form.telephone" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl text-sm" placeholder="+212 6 61 23 45 67" />
                 </div>
               </div>
-
             </div>
 
             <!-- ÉTAPE 2 : DIPLÔME D'ACCÈS (RÈGLE D2) -->
             <div v-if="etapeForm === 2" class="space-y-6">
-              
               <div class="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl text-amber-900 text-xs shadow-sm">
-                <p class="font-bold">📜 Règle Réglementaire D2 (Éligibilité du Diplôme d'Accès) :</p>
-                <p class="mt-1">
-                  Conformément au cahier des normes pédagogiques nationales (Arrêté n° 1371.07), seuls les candidats titulaires d'un <strong>Master National / Master Spécialisé</strong> ou d'un <strong>Diplôme d'Ingénieur d'État</strong> (ou équivalence réglementaire) sont autorisés à concourir.
-                </p>
+                <p class="font-bold">📜 Règle Réglementaire D2 (Éligibilité du Diplôme) :</p>
+                <p class="mt-1">Seuls les diplômés de Master National, Master Spécialisé ou Diplôme d'Ingénieur d'État sont autorisés à concourir.</p>
               </div>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Intitulé du Diplôme d'Accès *</label>
-                  <select v-model="form.diplome" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-semibold">
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Intitulé du Diplôme d'Accès *</label>
+                  <select v-model="form.diplome" class="w-full p-3.5 border rounded-xl text-sm font-semibold">
                     <option value="Master National">Master National (LMD)</option>
                     <option value="Master Spécialisé">Master Spécialisé / MST</option>
                     <option value="Diplôme d'Ingénieur d'État">Diplôme d'Ingénieur d'État</option>
-                    <option value="Master Étranger">Master Étranger (Avec équivalence réglementaire)</option>
+                    <option value="Master Étranger">Master Étranger (Avec équivalence)</option>
                   </select>
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Établissement / Université d'Origine *</label>
-                  <input v-model="form.etablissement" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm" placeholder="ex: Faculté des Sciences Dhar El Mahraz Fès" />
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Établissement / Université d'Origine *</label>
+                  <input v-model="form.etablissement" type="text" class="w-full p-3.5 border rounded-xl text-sm" placeholder="Faculté des Sciences Dhar El Mahraz Fès" />
                 </div>
 
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Année d'Obtention *</label>
-                  <input v-model="form.anneeObtention" type="number" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-mono font-bold" placeholder="2025" />
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Moyenne Générale du Diplôme *</label>
-                  <input v-model="form.moyenne" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm font-mono" placeholder="ex: 15.80 / 20" />
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Spécialité du Master / Ingéniorat *</label>
-                  <input v-model="form.specialiteMaster" type="text" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm" placeholder="ex: Intelligence Artificielle & Génie Logiciel" />
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Mention Obtenue</label>
-                  <select v-model="form.mention" class="w-full p-3.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-sm">
-                    <option value="Très Bien">Très Bien</option>
-                    <option value="Bien">Bien</option>
-                    <option value="Assez Bien">Assez Bien</option>
-                    <option value="Passable">Passable</option>
-                  </select>
+                  <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Moyenne Générale du Master *</label>
+                  <input v-model="form.moyenne" type="text" class="w-full p-3.5 border rounded-xl text-sm font-mono" placeholder="15.80 / 20" />
                 </div>
               </div>
-
             </div>
 
-            <!-- ÉTAPE 3 : SELECTION SPÉCIALITÉ ET FILTRAGE DYNAMIQUE DES SUJETS DE THÈSE -->
+            <!-- ÉTAPE 3 : CHOIX DE LA SPÉCIALITÉ UNIQUEMENT -->
             <div v-if="etapeForm === 3" class="space-y-6">
-
               <div class="p-4 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-900 text-xs">
-                <p class="font-bold">🎯 Sélection de la Spécialité & Filtrage Automatique des Sujets :</p>
-                <p class="mt-1">
-                  Cochez votre spécialité académique dans le panneau de gauche. Les sujets de recherche rattachés à cette spécialité s'afficheront instantanément dans le panneau de droite !
-                </p>
+                <p class="font-bold">🎯 Étape 3 : Choisissez d'abord votre Spécialité Académique :</p>
+                <p class="mt-1">Sélectionnez la spécialité ci-dessous. En cliquant sur "Étape Suivante ➡️", le système affichera uniquement les sujets de thèse correspondant à cette spécialité.</p>
               </div>
 
-              <!-- Layout 2 colonnes : Gauche (Spécialités) / Droite (Sujets filtrés) -->
-              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-                <!-- Colonne Gauche : Liste des Spécialités (Radio Cards) -->
-                <div class="lg:col-span-5 space-y-3">
-                  <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wide mb-2 flex items-center justify-between">
-                    <span>1. Cocher la Spécialité *</span>
-                    <span class="text-[10px] text-slate-400 font-normal">Cliquez pour filtrer</span>
-                  </h3>
-                  
-                  <div 
-                    v-for="spec in listeSpecialites" 
-                    :key="spec.id"
-                    @click="selectionnerSpecialite(spec.id)"
-                    :class="specialiteChoisie === spec.id ? 'border-indigo-600 bg-indigo-50/90 shadow-md ring-2 ring-indigo-500/20' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50'"
-                    class="p-4 rounded-xl border cursor-pointer transition flex items-center justify-between space-x-3">
-                    <div class="flex items-center space-x-3">
-                      <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0" :class="specialiteChoisie === spec.id ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300'">
-                        <div v-if="specialiteChoisie === spec.id" class="w-2 h-2 rounded-full bg-white"></div>
-                      </div>
-                      <div>
-                        <p class="text-xs font-bold text-slate-900">{{ spec.nom }}</p>
-                        <p class="text-[10px] text-slate-500 mt-0.5 leading-snug">{{ spec.description }}</p>
-                      </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div 
+                  v-for="spec in listeSpecialites" 
+                  :key="spec.id"
+                  @click="form.specialiteId = spec.id"
+                  :class="form.specialiteId === spec.id ? 'border-indigo-600 bg-indigo-50/90 shadow-md ring-2 ring-indigo-500/20' : 'border-slate-200 bg-white hover:border-indigo-300'"
+                  class="p-5 rounded-2xl border cursor-pointer transition flex items-start justify-between space-x-4">
+                  <div class="flex items-start space-x-3">
+                    <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5" :class="form.specialiteId === spec.id ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300'">
+                      <div v-if="form.specialiteId === spec.id" class="w-2.5 h-2.5 rounded-full bg-white"></div>
                     </div>
-                    <span class="text-[11px] font-bold px-2.5 py-1 rounded-full shrink-0" :class="specialiteChoisie === spec.id ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'">
-                      {{ compterSujetsParSpec(spec.id) }} Sujet(s)
+                    <div>
+                      <h4 class="text-sm font-bold text-slate-900">{{ spec.nom }}</h4>
+                      <p class="text-xs text-slate-500 mt-1 leading-relaxed">{{ spec.description }}</p>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold px-3 py-1 rounded-full shrink-0" :class="form.specialiteId === spec.id ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'">
+                    {{ compterSujetsParSpec(spec.id) }} Sujets
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ÉTAPE 4 : AFFICHAGE EXCLUSIF DES SUJETS FILTRÉS POUR LA SPÉCIALITÉ CHOISIE -->
+            <div v-if="etapeForm === 4" class="space-y-6">
+              
+              <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 text-xs flex justify-between items-center">
+                <div>
+                  <p class="font-bold">🔬 Sujets de Thèse disponibles pour la spécialité : <span class="underline">{{ specialiteSelectionneeObj.nom }}</span></p>
+                  <p class="mt-0.5 text-[11px]">Seuls les sujets validés par le CEDoc pour cette spécialité sont affichés ci-dessous (Règles D3 & D5).</p>
+                </div>
+                <button @click="etapeForm = 3" class="px-3 py-1 bg-emerald-700 text-white font-bold rounded-lg text-[11px]">Modifier la Spécialité</button>
+              </div>
+
+              <div class="space-y-4">
+                <div 
+                  v-for="sujet in sujetsFiltres" 
+                  :key="sujet.id"
+                  @click="choisirSujet(sujet)"
+                  :class="form.sujet === sujet.titre ? 'border-emerald-500 bg-emerald-50/80 shadow-md ring-2 ring-emerald-500/20' : 'border-slate-200 bg-white hover:border-indigo-300'"
+                  class="p-5 rounded-2xl border cursor-pointer transition space-y-3">
+                  
+                  <div class="flex justify-between items-start gap-3">
+                    <h4 class="text-sm font-bold text-slate-900">{{ sujet.titre }}</h4>
+                    <span v-if="form.sujet === sujet.titre" class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shrink-0">
+                      ✓ Sujet Sélectionné
                     </span>
                   </div>
-                </div>
 
-                <!-- Colonne Droite : Sujets Filtrés Dynamiquement -->
-                <div class="lg:col-span-7 space-y-3">
-                  <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">
-                    2. Sujets de Thèse Proposés pour cette Spécialité (D3 / D5) *
-                  </h3>
+                  <p class="text-xs text-slate-600 leading-relaxed">{{ sujet.description }}</p>
 
-                  <div v-if="!specialiteChoisie" class="p-8 border-2 border-dashed border-slate-200 rounded-2xl text-center text-slate-400 text-xs">
-                    👈 Veuillez d'abord cocher une spécialité dans la colonne de gauche.
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-3 border-t border-slate-100">
+                    <p><strong class="text-slate-800">🏛️ Laboratoire d'Accueil (D3) :</strong> {{ sujet.labo }}</p>
+                    <p><strong class="text-slate-800">👨‍🏫 Directeur de Thèse Habilité (D5) :</strong> {{ sujet.encadrant }}</p>
                   </div>
-
-                  <div v-else class="space-y-3 max-h-[500px] overflow-y-auto custom-scrollbar pr-1">
-                    <div 
-                      v-for="sujet in sujetsFiltres" 
-                      :key="sujet.id"
-                      @click="choisirSujet(sujet)"
-                      :class="form.sujet === sujet.titre ? 'border-emerald-500 bg-emerald-50/70 shadow-md ring-2 ring-emerald-500/20' : 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-slate-50'"
-                      class="p-4 rounded-xl border cursor-pointer transition space-y-2 relative">
-                      
-                      <div class="flex justify-between items-start gap-2">
-                        <h4 class="text-xs font-bold text-slate-900 leading-snug">{{ sujet.titre }}</h4>
-                        <span v-if="form.sujet === sujet.titre" class="bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shrink-0 shadow-sm">
-                          ✓ Sélectionné
-                        </span>
-                      </div>
-
-                      <p class="text-[11px] text-slate-500 italic leading-relaxed">{{ sujet.description }}</p>
-
-                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600 pt-2 border-t border-slate-100">
-                        <p><strong class="text-slate-800">🏛️ Labo (D3) :</strong> {{ sujet.labo }}</p>
-                        <p><strong class="text-slate-800">👨‍🏫 Directeur (D5) :</strong> {{ sujet.encadrant }}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- Bloc Récapitulatif du Sujet Sélectionné -->
-              <div v-if="form.sujet" class="p-5 bg-slate-950 text-white rounded-2xl shadow-md border border-slate-800 space-y-1.5 text-xs">
-                <div class="flex justify-between items-center">
-                  <span class="font-bold text-emerald-400 uppercase tracking-wider text-[11px]">✅ Sujet de Thèse Retenu pour Candidature :</span>
-                  <span class="text-slate-400 text-[10px] font-mono">ID: SUJ-2026-USMBA</span>
-                </div>
-                <p class="font-bold text-sm text-slate-100">{{ form.sujet }}</p>
-                <div class="flex flex-wrap gap-4 text-[11px] text-slate-400 pt-1">
-                  <span>Encadrant Habilité (D5) : <strong>{{ form.encadrant }}</strong></span>
-                  <span>•</span>
-                  <span>Structure d'accueil (D3) : <strong>{{ form.labo }}</strong></span>
                 </div>
               </div>
 
             </div>
 
-            <!-- ÉTAPE 4 : PIÈCES JUSTIFICATIVES & VALIDATION FINALE -->
-            <div v-if="etapeForm === 4" class="space-y-6">
+            <!-- ÉTAPE 5 : PIÈCES JUSTIFICATIVES & API REST SOUMISSION -->
+            <div v-if="etapeForm === 5" class="space-y-6">
 
-              <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-xl text-indigo-900 text-xs">
-                <p class="font-bold">📁 Joindre les pièces justificatives obligatoires (PDF) :</p>
-                <p class="mt-1">Taille maximale autorisée par fichier : 3 MB.</p>
+              <div class="bg-slate-950 text-white p-5 rounded-2xl border border-slate-800 text-xs space-y-2">
+                <h4 class="font-bold text-emerald-400">📋 Récapitulatif de la Candidature avant Envoi API :</h4>
+                <p><strong>Candidat :</strong> {{ form.nom }} {{ form.prenom }} (CIN: {{ form.cin }} | CNE: {{ form.cne }})</p>
+                <p><strong>Spécialité Choisie :</strong> {{ specialiteSelectionneeObj.nom }}</p>
+                <p><strong>Sujet Retenu :</strong> {{ form.sujet }}</p>
+                <p><strong>Directeur :</strong> {{ form.encadrant }} ({{ form.labo }})</p>
               </div>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div class="p-4 border border-slate-200 rounded-xl bg-slate-50 space-y-2">
-                  <span class="font-bold text-slate-800 block">1. Copie de la CIN certifiée conforme *</span>
-                  <input type="file" accept=".pdf,.png,.jpg" class="block w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-100 file:text-indigo-700" />
+                  <span class="font-bold text-slate-800 block">1. Copie CIN certifiée conforme *</span>
+                  <input type="file" class="block w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-indigo-100 file:text-indigo-700" />
                 </div>
                 <div class="p-4 border border-slate-200 rounded-xl bg-slate-50 space-y-2">
                   <span class="font-bold text-slate-800 block">2. Diplôme du Master / Ingénieur (D2) *</span>
-                  <input type="file" accept=".pdf" class="block w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-100 file:text-indigo-700" />
-                </div>
-                <div class="p-4 border border-slate-200 rounded-xl bg-slate-50 space-y-2">
-                  <span class="font-bold text-slate-800 block">3. Relevés de notes globaux du parcours *</span>
-                  <input type="file" accept=".pdf" class="block w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-100 file:text-indigo-700" />
-                </div>
-                <div class="p-4 border border-slate-200 rounded-xl bg-slate-50 space-y-2">
-                  <span class="font-bold text-slate-800 block">4. CV et Projet de Thèse *</span>
-                  <input type="file" accept=".pdf" class="block w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-100 file:text-indigo-700" />
+                  <input type="file" class="block w-full text-xs text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:bg-indigo-100 file:text-indigo-700" />
                 </div>
               </div>
 
               <div class="pt-4 border-t border-slate-200">
                 <label class="flex items-start space-x-3 cursor-pointer">
                   <input type="checkbox" v-model="conditionsAcceptees" class="mt-0.5 rounded text-indigo-600 w-4 h-4" />
-                  <span class="text-xs text-slate-600 leading-relaxed">
-                    Je certifie sur l'honneur l'exactitude des informations fournies et des documents joints conformément au cahier des normes pédagogiques nationales (Arrêté n° 1371.07).
-                  </span>
+                  <span class="text-xs text-slate-600">Je certifie sur l'honneur l'exactitude des informations et le choix du sujet conformément à l'Arrêté n° 1371.07.</span>
                 </label>
               </div>
 
@@ -523,20 +413,17 @@
 
           </div>
 
-          <!-- Buttons Footer Formulaire -->
+          <!-- Buttons Navigation Footer -->
           <div class="bg-slate-50 px-6 py-4 border-t border-slate-200 flex justify-between items-center">
-            <button v-if="etapeForm > 1" @click="etapeForm--" class="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 font-bold text-xs rounded-xl hover:bg-slate-100 transition shadow-sm">
-              ⬅️ Précédent
-            </button>
+            <button v-if="etapeForm > 1" @click="etapeForm--" class="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 font-bold text-xs rounded-xl">⬅️ Précédent</button>
             <div v-else></div>
 
-            <button v-if="etapeForm < 4" @click="etapeForm++" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center space-x-2">
-              <span>Étape Suivante</span>
-              <span>➡️</span>
+            <button v-if="etapeForm < 5" @click="passerEtapeSuivante" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow transition">
+              <span>Étape Suivante ➡️</span>
             </button>
 
-            <button v-if="etapeForm === 4" @click="soumettreDossier" :disabled="!conditionsAcceptees" :class="conditionsAcceptees ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-200' : 'bg-slate-300 text-slate-500 cursor-not-allowed'" class="px-8 py-3 font-bold text-xs rounded-xl transition flex items-center space-x-2">
-              <span>🚀 Soumettre le Dossier & Exécuter l'API</span>
+            <button v-if="etapeForm === 5" @click="soumettreDossierAPI" :disabled="!conditionsAcceptees" :class="conditionsAcceptees ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg' : 'bg-slate-300 text-slate-500 cursor-not-allowed'" class="px-8 py-3 font-bold text-xs rounded-xl">
+              🚀 Soumettre le Dossier & Exécuter l'API REST
             </button>
           </div>
 
@@ -544,166 +431,164 @@
       </main>
 
       <!-- ================================================================= -->
-      <!-- ONGLET 2 : DEMANDE DE RÉINSCRIPTION (2E A 6E ANNÉE)              -->
+      <!-- ONGLET 2 : DEMANDE DE RÉINSCRIPTION                              -->
       <!-- ================================================================= -->
       <main v-if="ongletActif === 'reinscription'" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
-        <div class="border-b pb-4">
-          <h2 class="text-xl font-black text-slate-900">🔄 Demande de Réinscription Annuelle au Doctorat</h2>
-          <p class="text-xs text-slate-500 mt-1">Dossier de renouvellement annuel pour les doctorants régulièrement inscrits au CEDoc</p>
-        </div>
-        
+        <h2 class="text-xl font-black text-slate-900 border-b pb-4">🔄 Demande de Réinscription Annuelle au Doctorat</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Code Doctorant / Numéro Apogée *</label>
-            <input v-model="reinscription.numDoctorant" type="text" class="w-full p-3.5 border rounded-xl text-sm font-mono font-bold" placeholder="ex: DOC-2024-8849" />
+            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Code Doctorant / Apogée *</label>
+            <input v-model="reinscription.numDoctorant" type="text" class="w-full p-3.5 border rounded-xl text-sm font-mono font-bold" placeholder="DOC-2024-8849" />
           </div>
-
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Année de Thèse Sollicitée *</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Année de Thèse *</label>
             <select v-model.number="reinscription.anneeThese" class="w-full p-3.5 border rounded-xl text-sm font-semibold">
-              <option :value="2">2ème Année de Doctorat</option>
-              <option :value="3">3ème Année de Doctorat (Normal)</option>
-              <option :value="4">4ème Année (Prorogation Règle D4 - Accord Requis)</option>
-              <option :value="5">5ème Année (Prorogation Règle D4)</option>
-              <option :value="6">6ème Année (Dérogation Finale du Président)</option>
+              <option :value="2">2ème Année</option>
+              <option :value="3">3ème Année</option>
+              <option :value="4">4ème Année (Prorogation D4)</option>
+              <option :value="5">5ème Année (Prorogation D4)</option>
             </select>
           </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase">Crédits Validés (Formations/Ateliers)</label>
-            <input v-model="reinscription.credits" type="number" class="w-full p-3.5 border rounded-xl text-sm font-mono" placeholder="ex: 180" />
-          </div>
         </div>
-
-        <!-- Alerte Prorogation Règle D4 -->
-        <div v-if="reinscription.anneeThese >= 4" class="p-5 bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 rounded-r-2xl text-amber-950 text-xs space-y-2 shadow-sm">
-          <div class="flex items-center space-x-2 font-bold text-sm text-amber-900">
-            <span>⚠️ Contrôle Automatique Règle Nationale D4 (Thèse > 3 ans)</span>
-          </div>
-          <p>
-            Conformément aux directives du CEDoc, la durée normale d'une thèse est de 3 ans. Pour l'inscription en <strong>{{ reinscription.anneeThese }}ème année</strong>, l'importation de la dérogation accordée et signée par le Directeur du CEDoc est obligatoire.
-          </p>
-          <div class="pt-2">
-            <label class="block font-bold mb-1">Téléverser l'Accord de Prorogation Signé (PDF) :</label>
-            <input type="file" accept=".pdf" class="block w-full text-xs text-slate-600 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-200 file:text-amber-900" />
-          </div>
-        </div>
-
-        <div class="pt-4 border-t border-slate-200 flex justify-end">
-          <button @click="soumettreReinscription" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-lg transition">
-            🔄 Soumettre la Demande de Réinscription
-          </button>
-        </div>
+        <button @click="soumettreReinscription" class="px-8 py-3 bg-indigo-600 text-white font-bold text-xs rounded-xl">🔄 Soumettre la Demande</button>
       </main>
 
       <!-- ================================================================= -->
-      <!-- ONGLET 3 : CATALOGUE DES SUJETS & STRUCTURES                      -->
-      <!-- ================================================================= -->
-      <main v-if="ongletActif === 'catalogue'" class="space-y-6">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
-          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-4">
-            <div>
-              <h2 class="text-xl font-black text-slate-900">📚 Catalogue Général des Sujets de Thèse Proposés</h2>
-              <p class="text-xs text-slate-500 mt-1">Consultez les sujets disponibles dans l'ensemble des laboratoires agréés par le CEDoc</p>
-            </div>
-            <input v-model="rechercheSujetQuery" type="text" placeholder="🔍 Rechercher un sujet, labo, encadrant..." class="p-3 border border-slate-300 rounded-xl text-xs w-full md:w-72" />
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div v-for="sujet in catalogueSujetsFiltresParTexte" :key="sujet.id" class="p-5 border border-slate-200 rounded-2xl bg-white hover:border-indigo-300 hover:shadow-md transition space-y-3 flex flex-col justify-between">
-              <div>
-                <div class="flex justify-between items-start gap-2 mb-2">
-                  <span class="bg-indigo-50 text-indigo-700 font-bold text-[10px] px-2.5 py-0.5 rounded-full border border-indigo-200">
-                    {{ sujet.specialiteNom }}
-                  </span>
-                  <span class="text-[10px] font-mono text-emerald-600 font-bold">● Places Dispo</span>
-                </div>
-                <h4 class="text-xs font-bold text-slate-900 leading-snug">{{ sujet.titre }}</h4>
-                <p class="text-[11px] text-slate-500 mt-2 leading-relaxed">{{ sujet.description }}</p>
-              </div>
-
-              <div class="pt-3 border-t border-slate-100 text-[11px] text-slate-600 space-y-1">
-                <p><strong class="text-slate-800">🏛️ Labo :</strong> {{ sujet.labo }}</p>
-                <p><strong class="text-slate-800">👨‍🏫 Encadrant :</strong> {{ sujet.encadrant }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <!-- ================================================================= -->
-      <!-- ONGLET 4 : SUIVI DU DOSSIER & CONSOLE API                         -->
+      <!-- ONGLET 3 : SUIVI DU DOSSIER & CONSOLE API                         -->
       <!-- ================================================================= -->
       <main v-if="ongletActif === 'suivi'" class="space-y-6">
-        
-        <!-- Console API Temps Réel -->
-        <div class="bg-slate-950 text-emerald-400 p-6 rounded-2xl shadow-xl font-mono text-xs space-y-3 border border-slate-800">
-          <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-            <span class="font-bold text-white flex items-center space-x-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>CONSOLE API DE PRÉ-VALIDATION AUTOMATIQUE (RÈGLES D2-D5)</span>
-            </span>
-            <span class="text-slate-500 text-[10px]">VER: 2026.4.1</span>
+        <div class="bg-slate-950 text-emerald-400 p-6 rounded-2xl font-mono text-xs space-y-3 shadow-xl">
+          <div class="flex justify-between border-b border-slate-800 pb-2">
+            <span class="font-bold text-white">CONSOLE API DE PRÉ-VALIDATION AUTOMATIQUE (ENDPOINT REST: /api/v1/doctorat)</span>
+            <span>HTTP 200 OK</span>
           </div>
-          <p><span class="text-emerald-400">[SYSTEM]</span> Initialisation du moteur de règles nationales (Arrêté 1371.07)... OK</p>
-          <p><span class="text-blue-400">[OCR]</span> Module Scan Carte (TessData OCR) : Prêt et opérationnel.</p>
-          <p><span class="text-purple-400">[RULE D2]</span> Diplôme d'Accès : {{ form.diplome }} <span class="text-emerald-400">✓ CONFORME</span></p>
-          <p><span class="text-purple-400">[RULE D3/D5]</span> Spécialité & Sujet Retenu : {{ form.sujet || 'Non sélectionné' }} <span class="text-emerald-400">✓ VALIDÉ</span></p>
-          <p class="text-amber-300 font-bold pt-1">> Statut Système : {{ statutDossier.apiMessage }}</p>
+          <p><span class="text-emerald-400">[SYSTEM API]</span> Initialisation du moteur de règles du CEDoc... OK</p>
+          <p><span class="text-blue-400">[OCR API]</span> Données civiles de la carte lues et injectées... OK</p>
+          <p><span class="text-purple-400">[RULE D2 API]</span> Éligibilité Diplôme ({{ form.diplome }}) : <span class="text-emerald-400">✓ CONFORME</span></p>
+          <p><span class="text-purple-400">[RULE D3/D5 API]</span> Validation Sujet ({{ form.sujet || 'Non sélectionné' }}) : <span class="text-emerald-400">✓ VALIDÉ</span></p>
+          <p class="text-amber-300 font-bold pt-1">> Statut API : {{ statutDossier.apiMessage }}</p>
         </div>
 
-        <!-- Diagramme d'états UML Visualizer -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-6">
-          <h3 class="text-base font-bold text-slate-900 border-b pb-3">📊 Diagramme d'États UML — Suivi du Workflow Administratif</h3>
-          
+        <div class="bg-white rounded-2xl border p-6 space-y-6">
+          <h3 class="text-base font-bold text-slate-900 border-b pb-3">📊 Diagramme d'États UML — Suivi du Workflow</h3>
           <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs font-bold">
-            <div :class="statutDossier.etat === 'Brouillon' ? 'bg-amber-500 text-white shadow-md ring-2 ring-amber-400' : 'bg-slate-100 text-slate-500'" class="p-4 rounded-xl text-center transition">1. Brouillon</div>
-            <div :class="statutDossier.etat === 'Soumis' ? 'bg-blue-600 text-white shadow-md ring-2 ring-blue-400' : 'bg-slate-100 text-slate-500'" class="p-4 rounded-xl text-center transition">2. Soumis</div>
-            <div :class="statutDossier.etat === 'Vérification' ? 'bg-purple-600 text-white shadow-md ring-2 ring-purple-400' : 'bg-slate-100 text-slate-500'" class="p-4 rounded-xl text-center transition">3. En Vérification</div>
-            <div :class="statutDossier.etat === 'En attente de pièces' ? 'bg-orange-500 text-white shadow-md' : 'bg-slate-100 text-slate-500'" class="p-4 rounded-xl text-center transition">4. Re-correction</div>
-            <div :class="statutDossier.etat === 'Accepté' ? 'bg-emerald-600 text-white shadow-md ring-2 ring-emerald-400' : (statutDossier.etat === 'Refusé' ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-500')" class="p-4 rounded-xl text-center transition">5. Décision</div>
-          </div>
-
-          <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-xs space-y-2">
-            <h4 class="font-bold text-slate-800 text-sm mb-2">📋 Synthèse des Informations Candidat :</h4>
-            <p><strong>Nom & Prénom :</strong> {{ form.nom }} {{ form.prenom }}</p>
-            <p><strong>CNE / MASSAR :</strong> <span class="font-mono font-bold">{{ form.cne }}</span> | <strong>CIN :</strong> <span class="font-mono font-bold">{{ form.cin }}</span></p>
-            <p><strong>Spécialité Académique :</strong> {{ nomSpecialiteSelectionnee }}</p>
-            <p><strong>Sujet de Thèse :</strong> {{ form.sujet }}</p>
-            <p><strong>Encadrant Habilité (D5) :</strong> {{ form.encadrant }}</p>
-            <p><strong>Laboratoire d'accueil (D3) :</strong> {{ form.labo }}</p>
+            <div :class="statutDossier.etat === 'Brouillon' ? 'bg-amber-500 text-white' : 'bg-slate-100 text-slate-500'" class="p-4 rounded-xl text-center">1. Brouillon</div>
+            <div :class="statutDossier.etat === 'Soumis' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'" class="p-4 rounded-xl text-center">2. Soumis</div>
+            <div :class="statutDossier.etat === 'Vérification' ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-500'" class="p-4 rounded-xl text-center">3. En Vérification</div>
+            <div :class="statutDossier.etat === 'En attente de pièces' ? 'bg-orange-500 text-white' : 'bg-slate-100 text-slate-500'" class="p-4 rounded-xl text-center">4. Re-correction</div>
+            <div :class="statutDossier.etat === 'Accepté' ? 'bg-emerald-600 text-white' : (statutDossier.etat === 'Refusé' ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-500')" class="p-4 rounded-xl text-center">5. Décision</div>
           </div>
         </div>
-
       </main>
 
       <!-- ================================================================= -->
-      <!-- ONGLET 5 : ESPACE ADMINISTRATION (SCOLARITÉ)                      -->
+      <!-- ONGLET 4 : ESPACE SCOLARITÉ / ADMINISTRATION (DASHBOARD KHDAM)    -->
       <!-- ================================================================= -->
-      <main v-if="ongletActif === 'scolarite' && roleVue === 'admin'" class="bg-white rounded-2xl shadow-sm border border-purple-200 p-6 md:p-8 space-y-6">
-        <h2 class="text-xl font-bold text-purple-950 border-b pb-4">⚡ Espace Scolarité — Traitement & Changement d'État</h2>
-        <p class="text-xs text-slate-600">Sélectionnez le nouvel état du dossier dans le diagramme d'états UML :</p>
-        <div class="flex flex-wrap gap-3">
-          <button @click="changerEtat('Vérification', 'Contrôle des pièces d\'identité et diplôme d\'accès par la scolarité.')" class="px-4 py-2.5 bg-purple-600 text-white text-xs font-bold rounded-xl hover:bg-purple-700 shadow">🔍 En Vérification</button>
-          <button @click="changerEtat('En attente de pièces', 'Une pièce justificative est manquante ou illisible.')" class="px-4 py-2.5 bg-orange-500 text-white text-xs font-bold rounded-xl hover:bg-orange-600 shadow">⚠️ Demande de Pièces (En attente)</button>
-          <button @click="changerEtat('Accepté', 'Candidature totalement conforme aux règles D2-D5. Inscription définitive validée !')" class="px-4 py-2.5 bg-emerald-600 text-white text-xs font-bold rounded-xl hover:bg-emerald-700 shadow">🟢 Valider & Accepter</button>
-          <button @click="changerEtat('Refusé', 'Candidature non conforme aux critères d\'accès.')" class="px-4 py-2.5 bg-rose-600 text-white text-xs font-bold rounded-xl hover:bg-rose-700 shadow">🔴 Refuser</button>
+      <main v-if="ongletActif === 'scolarite' && roleVue === 'admin'" class="space-y-6">
+        
+        <div class="bg-gradient-to-r from-purple-900 via-indigo-900 to-slate-900 text-white p-6 md:p-8 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center space-x-3">
+              <span class="bg-purple-500/20 text-purple-300 text-xs px-3 py-1 rounded-full font-bold border border-purple-400/30">Accès Sécurisé Admin</span>
+              <h2 class="text-xl md:text-2xl font-black">Espace Administration & Scolarité CEDoc</h2>
+            </div>
+            <p class="text-xs text-purple-200 mt-1">Validation des candidatures et changement d'état du Workflow UML</p>
+          </div>
+
+          <div class="flex items-center space-x-3">
+            <input v-model="rechercheAdminQuery" type="text" placeholder="🔍 Rechercher un candidat..." class="px-4 py-2 bg-white/10 border border-purple-300/30 rounded-xl text-xs text-white placeholder-purple-200 outline-none focus:bg-white/20 w-64" />
+          </div>
         </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <span class="text-slate-500 font-bold uppercase">Total Dossiers</span>
+            <p class="text-2xl font-black text-slate-900">{{ listeCandidatsAdmin.length }}</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-purple-100 shadow-sm">
+            <span class="text-purple-600 font-bold uppercase">En Vérification</span>
+            <p class="text-2xl font-black text-purple-700">{{ compterStatutAdmin('En Vérification') }}</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-emerald-100 shadow-sm">
+            <span class="text-emerald-600 font-bold uppercase">Acceptés</span>
+            <p class="text-2xl font-black text-emerald-700">{{ compterStatutAdmin('Accepté') }}</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-rose-100 shadow-sm">
+            <span class="text-rose-600 font-bold uppercase">Refusés</span>
+            <p class="text-2xl font-black text-rose-700">{{ compterStatutAdmin('Refusé') }}</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+          <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+            <h3 class="font-bold text-slate-900 text-sm">📋 Candidatures reçues via l'API REST</h3>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-100 text-slate-700 uppercase font-bold border-b border-slate-200">
+                  <th class="p-4">Candidat (OCR)</th>
+                  <th class="p-4">CNE / CIN</th>
+                  <th class="p-4">Spécialité & Sujet Retenu</th>
+                  <th class="p-4">État Workflow UML</th>
+                  <th class="p-4 text-center">Actions Administration</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr v-for="candidat in candidatsAdminFiltres" :key="candidat.id" class="hover:bg-slate-50">
+                  <td class="p-4 font-bold text-slate-900">
+                    {{ candidat.nom }} {{ candidat.prenom }}
+                    <span class="block text-[10px] font-normal text-slate-500">{{ candidat.email }}</span>
+                  </td>
+                  <td class="p-4 font-mono font-semibold">
+                    {{ candidat.cne }}
+                    <span class="block text-[10px] text-slate-400">CIN: {{ candidat.cin }}</span>
+                  </td>
+                  <td class="p-4">
+                    <span class="font-bold text-indigo-700 block">{{ candidat.specialite }}</span>
+                    <span class="text-[10px] text-slate-500 truncate max-w-xs block">{{ candidat.sujet }}</span>
+                  </td>
+                  <td class="p-4">
+                    <span :class="{
+                      'bg-blue-100 text-blue-800': candidat.statut === 'Soumis',
+                      'bg-purple-100 text-purple-800': candidat.statut === 'En Vérification',
+                      'bg-orange-100 text-orange-800': candidat.statut === 'En attente de pièces',
+                      'bg-emerald-100 text-emerald-800': candidat.statut === 'Accepté',
+                      'bg-rose-100 text-rose-800': candidat.statut === 'Refusé'
+                    }" class="px-2.5 py-1 rounded-full font-bold border text-[10px]">
+                      {{ candidat.statut }}
+                    </span>
+                  </td>
+                  <td class="p-4">
+                    <div class="flex items-center justify-center space-x-1.5">
+                      <button @click="changerStatutCandidat(candidat, 'En Vérification')" class="p-1.5 bg-purple-100 text-purple-700 rounded-lg font-bold" title="En Vérification">🔍</button>
+                      <button @click="changerStatutCandidat(candidat, 'Accepté')" class="p-1.5 bg-emerald-100 text-emerald-700 rounded-lg font-bold" title="Accepter">🟢</button>
+                      <button @click="changerStatutCandidat(candidat, 'En attente de pièces')" class="p-1.5 bg-orange-100 text-orange-700 rounded-lg font-bold" title="Demander pièces">⚠️</button>
+                      <button @click="changerStatutCandidat(candidat, 'Refusé')" class="p-1.5 bg-rose-100 text-rose-700 rounded-lg font-bold" title="Refuser">🔴</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </main>
 
     </div>
 
-    <!-- Footer Page -->
+    <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-auto border-t border-slate-800">
       <div class="max-w-7xl mx-auto px-4 text-center">
-        <p class="font-bold text-slate-200">CEDoc USMBA — Application Web avec Scan OCR & Moteur d'API Rules</p>
-        <p class="text-[11px] text-slate-500 mt-1">Conforme à l'Arrêté n° 1371.07 • Modélisation UML & Vue.js 3 • 2026</p>
+        <p class="font-bold text-slate-200">CEDoc USMBA — Application Web avec Scan OCR & Moteur d'API REST</p>
+        <p class="text-[11px] text-slate-500 mt-1">Conforme à l'Arrêté n° 1371.07 • Vue.js 3 • 2026</p>
       </div>
     </footer>
 
   </div>
 
-  <!-- Script Application Vue.js 3 -->
+  <!-- Script Vue.js 3 -->
   <script>
     const { createApp } = Vue;
 
@@ -718,9 +603,8 @@
           ocrProgres: 0,
           carteScanneNom: '',
           conditionsAcceptees: false,
-          rechercheSujetQuery: '',
+          rechercheAdminQuery: '',
 
-          // Form Data Candidat
           form: {
             cne: 'N130098765',
             cin: 'CD789123',
@@ -732,70 +616,72 @@
             ville: 'Fès',
             diplome: 'Master National',
             etablissement: 'Faculté des Sciences Dhar El Mahraz Fès',
-            anneeObtention: 2025,
             moyenne: '15.80 / 20',
-            specialiteMaster: 'Intelligence Artificielle & Génie Logiciel',
-            mention: 'Très Bien',
+            specialiteId: 'info',
             sujet: 'Application de l\'IA et de l\'OCR dans la dématérialisation des workflows académiques',
-            labo: 'Laboratoire d\'Informatique, Systèmes et Vision (LISV)',
-            encadrant: 'Prof. BENNANI Amine (PES - Habilité HDR)'
+            labo: 'Laboratoire LISV',
+            encadrant: 'Prof. BENNANI Amine'
           },
 
-          // Choix dynamique spécialités & sujets
-          specialiteChoisie: 'info',
-          
           listeSpecialites: [
-            { id: 'info', nom: 'Informatique, IA & Systèmes (LISV)', description: 'Intelligence artificielle, vision par ordinateur, OCR et génie logiciel' },
-            { id: 'genie', nom: 'Génie Civil & Science des Matériaux (LIMM)', description: 'Bétons éco-responsables, structures et matériaux durables' },
+            { id: 'info', nom: 'Informatique, IA & Systèmes (LISV)', description: 'Intelligence artificielle, OCR, vision par ordinateur et génie logiciel' },
+            { id: 'genie', nom: 'Génie Civil & Matériaux (LIMM)', description: 'Bétons éco-responsables, structures et matériaux durables' },
             { id: 'bio', nom: 'Biotechnologies & Santé (LBS)', description: 'Génomique, bio-informatique et microbiologie appliquée' },
-            { id: 'math', nom: 'Mathématiques Appliquées & Big Data (LMA)', description: 'Modélisation stochastique, data science et optimisation' },
-            { id: 'phys', nom: 'Sciences Physiques & Énergies (LPER)', description: 'Énergies renouvelables, physique des matériaux et semi-conducteurs' }
+            { id: 'math', nom: 'Mathématiques Appliquées (LMA)', description: 'Modélisation stochastique, data science et algorithmes' }
           ],
 
           catalogueSujets: [
-            { id: 1, specialiteId: 'info', specialiteNom: 'Informatique & IA', titre: 'Application de l\'IA et de l\'OCR dans la dématérialisation des workflows académiques', description: 'Étude et déploiement d\'un moteur de reconnaissance optique et d\'API pour les dossiers d\'inscription.', labo: 'Laboratoire d\'Informatique, Systèmes et Vision (LISV)', encadrant: 'Prof. BENNANI Amine (PES - Habilité HDR)' },
-            { id: 2, specialiteId: 'info', specialiteNom: 'Informatique & Blockchain', titre: 'Sécurité et traçabilité des diplômes et attestations via Blockchain académique', description: 'Architecture décentralisée pour la vérification automatique des attestations universitaires.', labo: 'Laboratoire d\'Informatique, Systèmes et Vision (LISV)', encadrant: 'Prof. ALAMI Fatima (PH - Habilité HDR)' },
-            { id: 3, specialiteId: 'genie', specialiteNom: 'Génie Civil & Matériaux', titre: 'Modélisation comportementale des bétons éco-responsables à base de granulats recyclés', description: 'Analyse expérimentale de la durabilité et de la résistance mécanique sous contraintes thermiques.', labo: 'Laboratoire d\'Ingénierie, Modélisation & Matériaux (LIMM)', encadrant: 'Prof. CHRAIBI Omar (PES - Habilité HDR)' },
-            { id: 4, specialiteId: 'genie', specialiteNom: 'Génie Civil', titre: 'Analyse thermique et mécanique des structures en terre cuite stabilisée', description: 'Optimisation de l\'efficacité énergétique des bâtiments bio-sourcés.', labo: 'Laboratoire d\'Ingénierie, Modélisation & Matériaux (LIMM)', encadrant: 'Prof. CHRAIBI Omar (PES - Habilité HDR)' },
-            { id: 5, specialiteId: 'bio', specialiteNom: 'Biotechnologie', titre: 'Analyse génomique et bio-informatique des souches végétales en milieu semi-aride', description: 'Séquençage haut débit et modélisation des mécanismes d\'adaptation au stress hydrique.', labo: 'Laboratoire de Biotechnologie & Santé (LBS)', encadrant: 'Prof. TAZI Kawtar (PES - Habilité HDR)' },
-            { id: 6, specialiteId: 'math', specialiteNom: 'Maths Appliquées', titre: 'Optimisation stochastique et algorithmes prédictifs appliqués aux séries temporelles', description: 'Modèles mathématiques avancés pour l\'analyse de données massives.', labo: 'Laboratoire de Mathématiques Appliquées (LMA)', encadrant: 'Prof. BENNANI Amine (PES - Habilité HDR)' },
-            { id: 7, specialiteId: 'phys', specialiteNom: 'Physique & Énergies', titre: 'Optimisation du rendement des cellules photovoltaïques à base de pérovskites', description: 'Caractérisation physique et électronique des nouveaux matériaux semi-conducteurs.', labo: 'Laboratoire de Physique & Énergies (LPER)', encadrant: 'Prof. EL AMRENI Hassan (PES - Habilité HDR)' }
+            { id: 1, specialiteId: 'info', titre: 'Application de l\'IA et de l\'OCR dans la dématérialisation des workflows académiques', description: 'Étude et déploiement d\'un moteur de reconnaissance optique et d\'API pour l\'inscription.', labo: 'Laboratoire LISV', encadrant: 'Prof. BENNANI Amine (HDR)' },
+            { id: 2, specialiteId: 'info', titre: 'Sécurité et traçabilité des diplômes via Blockchain académique', description: 'Architecture décentralisée pour la vérification automatique des attestations.', labo: 'Laboratoire LISV', encadrant: 'Prof. ALAMI Fatima (HDR)' },
+            { id: 3, specialiteId: 'genie', titre: 'Modélisation comportementale des bétons éco-responsables', description: 'Analyse expérimentale de la durabilité et de la résistance mécanique.', labo: 'Laboratoire LIMM', encadrant: 'Prof. CHRAIBI Omar (HDR)' },
+            { id: 4, specialiteId: 'genie', titre: 'Analyse thermique des structures en terre cuite stabilisée', description: 'Optimisation de l\'efficacité énergétique des bâtiments.', labo: 'Laboratoire LIMM', encadrant: 'Prof. CHRAIBI Omar (HDR)' },
+            { id: 5, specialiteId: 'bio', titre: 'Analyse génomique et bio-informatique des souches végétales', description: 'Séquençage haut débit et modélisation des mécanismes d\'adaptation.', labo: 'Laboratoire LBS', encadrant: 'Prof. TAZI Kawtar (HDR)' },
+            { id: 6, specialiteId: 'math', titre: 'Optimisation stochastique et algorithmes prédictifs pour Big Data', description: 'Modèles mathématiques avancés pour l\'analyse de données massives.', labo: 'Laboratoire LMA', encadrant: 'Prof. BENNANI Amine (HDR)' }
           ],
 
           reinscription: {
             numDoctorant: 'DOC-2024-8849',
-            anneeThese: 2,
-            credits: 120
+            anneeThese: 2
           },
 
           statutDossier: {
             etat: 'Soumis',
-            apiMessage: 'Dossier transmis avec succès. Pré-validation API conforme.',
-            details: 'Votre candidature a été vérifiée automatiquement par les règles D2-D5.'
-          }
+            apiMessage: 'Dossier transmis via API REST. Contrôle des règles conforme.'
+          },
+
+          listeCandidatsAdmin: [
+            { id: 1, nom: 'EL MANSARI', prenom: 'Youssef', email: 'youssef.elmansari@usmba.ac.ma', cne: 'N130098765', cin: 'CD789123', diplome: 'Master National', specialite: 'Informatique, IA & Systèmes (LISV)', sujet: 'Application de l\'IA et de l'OCR dans la dématérialisation des workflows académiques', statut: 'Soumis' },
+            { id: 2, nom: 'BENALI', prenom: 'Salma', email: 'salma.benali@usmba.ac.ma', cne: 'USM9982123', cin: 'CB456123', diplome: 'Diplôme d\'Ingénieur', specialite: 'Génie Civil & Matériaux (LIMM)', sujet: 'Modélisation comportementale des bétons éco-responsables', statut: 'En Vérification' }
+          ]
         }
       },
       computed: {
+        specialiteSelectionneeObj() {
+          return this.listeSpecialites.find(s => s.id === this.form.specialiteId) || this.listeSpecialites[0];
+        },
         sujetsFiltres() {
-          if (!this.specialiteChoisie) return [];
-          return this.catalogueSujets.filter(s => s.specialiteId === this.specialiteChoisie);
+          return this.catalogueSujets.filter(s => s.specialiteId === this.form.specialiteId);
         },
-        nomSpecialiteSelectionnee() {
-          const spec = this.listeSpecialites.find(s => s.id === this.specialiteChoisie);
-          return spec ? spec.nom : 'Non sélectionnée';
-        },
-        catalogueSujetsFiltresParTexte() {
-          if (!this.rechercheSujetQuery) return this.catalogueSujets;
-          const q = this.rechercheSujetQuery.toLowerCase();
-          return this.catalogueSujets.filter(s => 
-            s.titre.toLowerCase().includes(q) || 
-            s.labo.toLowerCase().includes(q) || 
-            s.encadrant.toLowerCase().includes(q)
+        candidatsAdminFiltres() {
+          if (!this.rechercheAdminQuery) return this.listeCandidatsAdmin;
+          const q = this.rechercheAdminQuery.toLowerCase();
+          return this.listeCandidatsAdmin.filter(c => 
+            c.nom.toLowerCase().includes(q) || 
+            c.prenom.toLowerCase().includes(q) || 
+            c.cin.toLowerCase().includes(q)
           );
         }
       },
       methods: {
-        // SCAN OCR AUTOMATIQUE (CIN / ETUDIANT)
+        basculerRole(role) {
+          this.roleVue = role;
+          if (role === 'admin') {
+            this.ongletActif = 'scolarite';
+          } else {
+            this.ongletActif = 'premiere';
+          }
+        },
+
         scannerCarteOCR(event) {
           const file = event.target.files[0];
           if (!file) return;
@@ -810,27 +696,30 @@
               clearInterval(interval);
               setTimeout(() => {
                 this.ocrEnCours = false;
-                // Pre-remplissage automatique des données extraites par l'OCR
                 this.form.cne = "N130098765";
                 this.form.cin = "CD789123";
                 this.form.nom = "EL MANSARI";
                 this.form.prenom = "Youssef";
                 this.form.email = "youssef.elmansari@usmba.ac.ma";
                 this.form.telephone = "+212 6 61 23 45 67";
-                this.form.dateNaissance = "2001-05-14";
-                this.form.ville = "Fès";
-
-                alert("✅ OCR Réussi : Les informations de la Carte Nationale / Étudiant ont été extraites et pré-remplies automatiquement !");
+                alert("✅ Scan OCR Réussi : Informations de la carte extraites et pré-remplies !");
               }, 300);
             }
           }, 200);
         },
 
-        selectionnerSpecialite(specId) {
-          this.specialiteChoisie = specId;
-          const premierSujet = this.sujetsFiltres[0];
-          if (premierSujet) {
-            this.choisirSujet(premierSujet);
+        passerEtapeSuivante() {
+          if (this.etapeForm === 3) {
+            this.validerEtPasserAuxSujets();
+          } else {
+            this.etapeForm++;
+          }
+        },
+
+        validerEtPasserAuxSujets() {
+          this.etapeForm = 4;
+          if (this.sujetsFiltres.length > 0) {
+            this.choisirSujet(this.sujetsFiltres[0]);
           }
         },
 
@@ -844,26 +733,44 @@
           return this.catalogueSujets.filter(s => s.specialiteId === specId).length;
         },
 
-        soumettreDossier() {
+        soumettreDossierAPI() {
           this.statutDossier.etat = 'Soumis';
-          this.statutDossier.apiMessage = 'Règles API D2 (Diplôme), D3 (Quota labo) & D5 (Encadrant) vérifiées avec succès !';
-          alert("🚀 Dossier soumis avec succès ! Intégration de l'API validée.");
+          this.statutDossier.apiMessage = 'Règles API D2-D5 validées ! Candidature transmise à l\'Espace Admin.';
+          
+          this.listeCandidatsAdmin.unshift({
+            id: Date.now(),
+            nom: this.form.nom,
+            prenom: this.form.prenom,
+            email: this.form.email,
+            cne: this.form.cne,
+            cin: this.form.cin,
+            diplome: this.form.diplome,
+            specialite: this.specialiteSelectionneeObj.nom,
+            sujet: this.form.sujet,
+            statut: 'Soumis'
+          });
+
+          alert("🚀 Dossier soumis avec succès via l'API REST ! Transmis à la Scolarité.");
           this.ongletActif = 'suivi';
         },
 
         soumettreReinscription() {
           this.statutDossier.etat = 'Vérification';
-          this.statutDossier.apiMessage = `Vérification réinscription Année ${this.reinscription.anneeThese} (Règle D4)...`;
           alert(`🔄 Demande de réinscription transmise pour l'année ${this.reinscription.anneeThese} !`);
           this.ongletActif = 'suivi';
         },
 
-        changerEtat(nouvelEtat, msg) {
-          this.statutDossier.etat = nouvelEtat;
-          this.statutDossier.apiMessage = `Workflow mis à jour par la scolarité : État "${nouvelEtat}"`;
-          this.statutDossier.details = msg;
-          alert(`⚡ État mis à jour en : ${nouvelEtat}`);
-          this.ongletActif = 'suivi';
+        changerStatutCandidat(candidat, nouvelEtat) {
+          candidat.statut = nouvelEtat;
+          if (candidat.cin === this.form.cin) {
+            this.statutDossier.etat = nouvelEtat;
+            this.statutDossier.apiMessage = `Workflow mis à jour par la scolarité : "${nouvelEtat}"`;
+          }
+          alert(`⚡ État du dossier de ${candidat.nom} mis à jour en : "${nouvelEtat}"`);
+        },
+
+        compterStatutAdmin(statutNom) {
+          return this.listeCandidatsAdmin.filter(c => c.statut === statutNom).length;
         }
       }
     }).mount('#app');
