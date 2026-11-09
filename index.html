@@ -11,7 +11,7 @@
   <!-- Vue.js 3 CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -19,7 +19,6 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
     .font-mono { font-family: 'JetBrains Mono', monospace; }
-    [v-cloak] { display: none !important; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
@@ -31,9 +30,7 @@
     }
     .scan-laser-line {
       position: absolute;
-      left: 0;
-      right: 0;
-      height: 3px;
+      left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, rgba(59,130,246,0) 0%, rgba(16,185,129,1) 50%, rgba(59,130,246,0) 100%);
       box-shadow: 0 0 18px #10b981, 0 0 8px #3b82f6;
       animation: scanLaser 2s infinite ease-in-out;
@@ -41,7 +38,7 @@
   </style>
 </head>
 <body class="h-full text-slate-800 antialiased selection:bg-indigo-500 selection:text-white flex flex-col">
-  <div id="app" v-cloak class="min-h-screen flex flex-col flex-grow">
+  <div id="app" class="min-h-screen flex flex-col flex-grow">
 
     <!-- Top Banner -->
     <div class="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 text-white text-xs py-2 px-4 border-b border-indigo-800/40 shadow-inner">
@@ -56,7 +53,7 @@
         <div class="flex items-center space-x-4 text-indigo-200 text-[11px]">
           <span>🏛️ CEDoc USMBA Fès</span>
           <span>•</span>
-          <span class="text-emerald-300 font-mono">Module OCR & API REST v4.2 Actifs</span>
+          <span class="text-emerald-300 font-mono">Module OCR & Workflow Scolarité v4.2 Actifs</span>
         </div>
       </div>
     </div>
@@ -71,12 +68,10 @@
           </div>
           <div>
             <div class="flex items-center space-x-2">
-              <h1 class="text-lg md:text-xl font-black text-slate-900 tracking-tight">CEDoc USMBA</h1>
+              <h1 class="text-lg md:text-xl font-black text-slate-900 tracking-tight">CEDoc USMBA Fès</h1>
               <span class="bg-indigo-100 text-indigo-800 text-[10px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">Portail National</span>
             </div>
-            <p class="text-xs text-slate-500 font-medium">
-              Gestion Dématérialisée des Inscriptions & Espace Scolarité
-            </p>
+            <p class="text-xs text-slate-500 font-medium">Gestion Dématérialisée des Inscriptions & Espace Scolarité (Toutes Filières)</p>
           </div>
         </div>
 
@@ -193,7 +188,7 @@
               <h2 class="text-base md:text-lg font-bold text-slate-900">
                 <span v-if="etapeForm === 1">🪪 Étape 1 : Auto-remplissage via Scan OCR (Carte CIN / Étudiant)</span>
                 <span v-if="etapeForm === 2">🎓 Étape 2 : Éligibilité du Diplôme d'Accès (Contrôle Règle D2)</span>
-                <span v-if="etapeForm === 3">🎯 Étape 3 : Choix de la Spécialité Académique</span>
+                <span v-if="etapeForm === 3">🎯 Étape 3 : Choix de la Spécialité Académique (Toutes les disciplines USMBA)</span>
                 <span v-if="etapeForm === 4">🔬 Étape 4 : Sélection du Sujet de Thèse (Filtré pour : {{ specialiteSelectionneeObj.nom }})</span>
                 <span v-if="etapeForm === 5">📁 Étape 5 : Dépose des Pièces Justificatives & Validation API REST</span>
               </h2>
@@ -287,7 +282,7 @@
             <div v-if="etapeForm === 2" class="space-y-6">
               <div class="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl text-amber-900 text-xs shadow-sm">
                 <p class="font-bold">📜 Règle Réglementaire D2 (Éligibilité du Diplôme) :</p>
-                <p class="mt-1">Seuls les diplômés de Master National, Master Spécialisé ou Diplôme d'Ingénieur d'État sont autorisés à concourir.</p>
+                <p class="mt-1">Seuls les diplômés de Master National, Master Spécialisé, Diplôme d'Ingénieur d'État ou diplôme équivalent sont autorisés à concourir.</p>
               </div>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -313,11 +308,14 @@
               </div>
             </div>
 
-            <!-- ÉTAPE 3 : CHOIX DE LA SPÉCIALITÉ -->
+            <!-- ÉTAPE 3 : CHOIX DE LA SPÉCIALITÉ (11 DISCIPLINES USMBA) -->
             <div v-if="etapeForm === 3" class="space-y-6">
-              <div class="p-4 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-900 text-xs">
-                <p class="font-bold">🎯 Étape 3 : Choisissez votre Spécialité Académique :</p>
-                <p class="mt-1">Sélectionnez la spécialité ci-dessous. En cliquant sur "Étape Suivante ➡️", le système affichera uniquement les sujets de thèse correspondant à cette spécialité.</p>
+              <div class="p-4 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-900 text-xs flex justify-between items-center">
+                <div>
+                  <p class="font-bold">🎯 Choix de la Spécialité Académique (Cahier des Charges USMBA) :</p>
+                  <p class="mt-1">Sélectionnez votre discipline parmi les 11 pôles de recherche de l'Université Sidi Mohamed Ben Abdellah Fès.</p>
+                </div>
+                <span class="bg-indigo-600 text-white font-mono px-3 py-1 rounded-full font-bold text-[11px]">{{ listeSpecialites.length }} Spécialités</span>
               </div>
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -326,17 +324,20 @@
                   :key="spec.id"
                   @click="form.specialiteId = spec.id"
                   :class="form.specialiteId === spec.id ? 'border-indigo-600 bg-indigo-50/90 shadow-md ring-2 ring-indigo-500/20' : 'border-slate-200 bg-white hover:border-indigo-300'"
-                  class="p-5 rounded-2xl border cursor-pointer transition flex items-start justify-between space-x-4">
+                  class="p-4 rounded-2xl border cursor-pointer transition flex items-start justify-between space-x-3">
+                  
                   <div class="flex items-start space-x-3">
-                    <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5" :class="form.specialiteId === spec.id ? 'border-indigo-600 bg-indigo-600' : 'border-slate-300'">
-                      <div v-if="form.specialiteId === spec.id" class="w-2.5 h-2.5 rounded-full bg-white"></div>
-                    </div>
+                    <span class="text-2xl">{{ spec.icon }}</span>
                     <div>
                       <h4 class="text-sm font-bold text-slate-900">{{ spec.nom }}</h4>
-                      <p class="text-xs text-slate-500 mt-1 leading-relaxed">{{ spec.description }}</p>
+                      <p class="text-[11px] text-slate-500 mt-0.5 leading-relaxed">{{ spec.description }}</p>
+                      <span class="inline-block mt-2 text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">
+                        {{ spec.etablissement }}
+                      </span>
                     </div>
                   </div>
-                  <span class="text-xs font-bold px-3 py-1 rounded-full shrink-0" :class="form.specialiteId === spec.id ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'">
+
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-full shrink-0" :class="form.specialiteId === spec.id ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600'">
                     {{ compterSujetsParSpec(spec.id) }} Sujets
                   </span>
                 </div>
@@ -348,10 +349,10 @@
               
               <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 text-xs flex justify-between items-center">
                 <div>
-                  <p class="font-bold">🔬 Sujets de Thèse disponibles pour la spécialité : <span class="underline">{{ specialiteSelectionneeObj.nom }}</span></p>
-                  <p class="mt-0.5 text-[11px]">Seuls les sujets validés par le CEDoc pour cette spécialité sont affichés ci-dessous (Règles D3 & D5).</p>
+                  <p class="font-bold">🔬 Sujets de Thèse disponibles pour : <span class="underline">{{ specialiteSelectionneeObj.nom }}</span></p>
+                  <p class="mt-0.5 text-[11px]">Seuls les sujets validés par le CEDoc pour cette spécialité sont affichés (Règles D3 & D5).</p>
                 </div>
-                <button @click="etapeForm = 3" class="px-3 py-1 bg-emerald-700 text-white font-bold rounded-lg text-[11px]">Modifier la Spécialité</button>
+                <button @click="etapeForm = 3" class="px-3 py-1 bg-emerald-700 text-white font-bold rounded-lg text-[11px]">Changer la Spécialité</button>
               </div>
 
               <div class="space-y-4">
@@ -372,9 +373,13 @@
                   <p class="text-xs text-slate-600 leading-relaxed">{{ sujet.description }}</p>
 
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-3 border-t border-slate-100">
-                    <p><strong class="text-slate-800">🏛️ Laboratoire d'Accueil (D3) :</strong> {{ sujet.labo }}</p>
+                    <p><strong class="text-slate-800">🏛️ Laboratoire / Structure (D3) :</strong> {{ sujet.labo }}</p>
                     <p><strong class="text-slate-800">👨‍🏫 Directeur de Thèse Habilité (D5) :</strong> {{ sujet.encadrant }}</p>
                   </div>
+                </div>
+
+                <div v-if="sujetsFiltres.length === 0" class="p-8 text-center bg-slate-50 rounded-2xl text-slate-500 text-xs">
+                  Aucun sujet répertorié pour le moment dans cette discipline.
                 </div>
               </div>
 
@@ -462,7 +467,7 @@
             <span class="font-bold text-white">CONSOLE API DE PRÉ-VALIDATION AUTOMATIQUE (ENDPOINT REST: /api/v1/doctorat)</span>
             <span>HTTP 200 OK</span>
           </div>
-          <p><span class="text-emerald-400">[SYSTEM API]</span> Moteur de règles du CEDoc... OK</p>
+          <p><span class="text-emerald-400">[SYSTEM API]</span> Moteur de règles du CEDoc USMBA... OK</p>
           <p><span class="text-blue-400">[OCR API]</span> Données civiles lues et injectées... OK</p>
           <p><span class="text-purple-400">[RULE D2 API]</span> Éligibilité Diplôme ({{ form.diplome }}) : <span class="text-emerald-400">✓ CONFORME</span></p>
           <p><span class="text-purple-400">[RULE D3/D5 API]</span> Validation Sujet ({{ form.sujet || 'Non sélectionné' }}) : <span class="text-emerald-400">✓ VALIDÉ</span></p>
@@ -640,7 +645,7 @@
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-auto border-t border-slate-800">
       <div class="max-w-7xl mx-auto px-4 text-center">
-        <p class="font-bold text-slate-200">CEDoc USMBA — Application Web Doctorale</p>
+        <p class="font-bold text-slate-200">CEDoc USMBA — Université Sidi Mohamed Ben Abdellah Fès</p>
         <p class="text-[11px] text-slate-500 mt-1">Conforme à l'Arrêté n° 1371.07 • Vue.js 3 • 2026</p>
       </div>
     </footer>
@@ -654,67 +659,112 @@
     createApp({
       data() {
         return {
-          roleVue: 'candidat',
-          ongletActif: 'premiere',
+          roleVue: "candidat",
+          ongletActif: "premiere",
           etapeForm: 1,
-          anneeUniversitaire: '2025-2026',
+          anneeUniversitaire: "2025-2026",
           ocrEnCours: false,
           ocrProgres: 0,
-          carteScanneNom: '',
+          carteScanneNom: "",
           conditionsAcceptees: false,
-          rechercheAdminQuery: '',
+          rechercheAdminQuery: "",
           modalEditeurOuvert: false,
           candidatSelectionneAdmin: {},
 
           form: {
-            cne: 'N130098765',
-            cin: 'CD789123',
-            nom: 'EL MANSARI',
-            prenom: 'Youssef',
-            email: 'youssef.elmansari@usmba.ac.ma',
-            telephone: '+212 6 61 23 45 67',
-            dateNaissance: '2001-05-14',
-            ville: 'Fès',
-            diplome: 'Master National',
-            etablissement: 'Faculté des Sciences Dhar El Mahraz Fès',
-            moyenne: '15.80 / 20',
-            specialiteId: 'info',
-            sujet: 'Application de l\'IA et de l\'OCR dans la dématérialisation des workflows académiques',
-            labo: 'Laboratoire LISV',
-            encadrant: 'Prof. BENNANI Amine'
+            cne: "N130098765",
+            cin: "CD789123",
+            nom: "EL MANSARI",
+            prenom: "Youssef",
+            email: "youssef.elmansari@usmba.ac.ma",
+            telephone: "+212 6 61 23 45 67",
+            dateNaissance: "2001-05-14",
+            ville: "Fès",
+            diplome: "Master National",
+            etablissement: "Faculté des Sciences Dhar El Mahraz Fès",
+            moyenne: "15.80 / 20",
+            specialiteId: "info",
+            sujet: "Application de l'IA et de l'OCR dans la dématérialisation des workflows académiques",
+            labo: "Laboratoire LISV",
+            encadrant: "Prof. BENNANI Amine (HDR)"
           },
 
+          // CATALOGUE COMPLET DES 11 SPÉCIALITÉS USMBA
           listeSpecialites: [
-            { id: 'info', nom: 'Informatique, IA & Systèmes (LISV)', description: 'Intelligence artificielle, OCR, vision par ordinateur et génie logiciel' },
-            { id: 'genie', nom: 'Génie Civil & Matériaux (LIMM)', description: 'Bétons éco-responsables, structures et matériaux durables' },
-            { id: 'bio', nom: 'Biotechnologies & Santé (LBS)', description: 'Génomique, bio-informatique et microbiologie appliquée' },
-            { id: 'math', nom: 'Mathématiques Appliquées (LMA)', description: 'Modélisation stochastique, data science et algorithmes' }
+            { id: "info", icon: "💻", nom: "Informatique, IA & Systèmes Intelligents", etablissement: "FST / FS Dhar El Mahraz", description: "Intelligence Artificielle, OCR, Big Data, Vision par Ordinateur & Génie Logiciel" },
+            { id: "math", icon: "📐", nom: "Mathématiques Appliquées & Modélisation", etablissement: "FS Dhar El Mahraz / FST", description: "Analyse Numérique, Statistique Avancée, Data Science & Optimisation Stochastique" },
+            { id: "eco", icon: "📊", nom: "Sciences Économiques & Management d'Entreprise", etablissement: "FSJES Fès", description: "Finance d'Entreprise, Économie Appliquée, Économétrie & Marketing Digital" },
+            { id: "droit", icon: "⚖️", nom: "Sciences Juridiques (Droit Privé & Droit Public)", etablissement: "FSJES Fès", description: "Droit des Affaires, Droit Constitutionnel, Gouvernance & Contentieux Administrative" },
+            { id: "islam", icon: "🕌", nom: "Études Islamiques, Sharia & الفكر الفقهي", etablissement: "FLSH / Faculté Sharia Fès", description: "Fiqh, Usul Al Fiqh, المقاصد الشرعية w الدراسات القرآنية المقارنة" },
+            { id: "adab", icon: "📚", nom: "Langues, Littératures & Communication", etablissement: "FLSH Dhar El Mahraz / Saïs", description: "Littérature Arabe, Francophone, Anglaise, Linguistique & Traduction" },
+            { id: "edu", icon: "🎓", nom: "Sciences de l'Éducation & Didactique", etablissement: "ENS / FLSH Fès", description: "Ingénierie Pédagogique, Didactique des Disciplines & Technologies Éducatives" },
+            { id: "shs", icon: "🌍", nom: "Sociologie, Histoire & Géographie", etablissement: "FLSH Saïs Fès", description: "Patrimoine Régional, Sociologie des Mutations Urbaines & Aménagement du Territoire" },
+            { id: "phys", icon: "⚡", nom: "Physique des Matériaux & Énergies Renouvelables", etablissement: "FS / FST Fès", description: "Énergies Solaire & Éolienne, Nanomatériaux & Physique Quantique Appliquée" },
+            { id: "bio", icon: "🧪", nom: "Biotechnologies, Environnement & Santé", etablissement: "FS / FST Fès", description: "Bio-informatique, Microbiologie Appliquée & Valorisation des Substances Naturelles" },
+            { id: "genie", icon: "⚙️", nom: "Génie Civil, Industrial & Matériaux", etablissement: "FST / EST Fès", description: "Bétons Éco-responsables, Efficacité Énergétique des Bâtiments & Structures" }
           ],
 
+          // CATALOGUE RICHE ET DÉTAILLÉ DE SUJETS DE THÈSE PAR SPÉCIALITÉ
           catalogueSujets: [
-            { id: 1, specialiteId: 'info', titre: 'Application de l\'IA et de l\'OCR dans la dématérialisation des workflows académiques', description: 'Étude et déploiement d\'un moteur de reconnaissance optique et d\'API.', labo: 'Laboratoire LISV', encadrant: 'Prof. BENNANI Amine (HDR)' },
-            { id: 2, specialiteId: 'info', titre: 'Sécurité et traçabilité des diplômes via Blockchain académique', description: 'Architecture décentralisée pour la vérification automatique des attestations.', labo: 'Laboratoire LISV', encadrant: 'Prof. ALAMI Fatima (HDR)' },
-            { id: 3, specialiteId: 'genie', titre: 'Modélisation comportementale des bétons éco-responsables', description: 'Analyse expérimentale de la durabilité et de la résistance mécanique.', labo: 'Laboratoire LIMM', encadrant: 'Prof. CHRAIBI Omar (HDR)' },
-            { id: 4, specialiteId: 'genie', titre: 'Analyse thermique des structures en terre cuite stabilisée', description: 'Optimisation de l\'efficacité énergétique des bâtiments.', labo: 'Laboratoire LIMM', encadrant: 'Prof. CHRAIBI Omar (HDR)' },
-            { id: 5, specialiteId: 'bio', titre: 'Analyse génomique et bio-informatique des souches végétales', description: 'Séquençage haut débit et modélisation des mécanismes d\'adaptation.', labo: 'Laboratoire LBS', encadrant: 'Prof. TAZI Kawtar (HDR)' },
-            { id: 6, specialiteId: 'math', titre: 'Optimisation stochastique et algorithmes prédictifs pour Big Data', description: 'Modèles mathématiques avancés pour l\'analyse de données massives.', labo: 'Laboratoire LMA', encadrant: 'Prof. BENNANI Amine (HDR)' }
+            // INFORMATIQUE
+            { id: 1, specialiteId: "info", titre: "Application de l'IA et de l'OCR dans la dématérialisation des workflows académiques", description: "Étude et déploiement d'un moteur d'extraction optique de documents et d'API REST sécurisées.", labo: "Laboratoire LISV (FST Fès)", encadrant: "Prof. BENNANI Amine (HDR)" },
+            { id: 2, specialiteId: "info", titre: "Sécurité et traçabilité des diplômes nationaux via Blockchain académique", description: "Architectures décentralisées et Smart Contracts pour la certification automatique des actes académiques.", labo: "Laboratoire LISV (FST Fès)", encadrant: "Prof. ALAMI Fatima (HDR)" },
+            { id: 3, specialiteId: "info", titre: "Deep Learning appliqué au traitement automatique du langage naturel (NLP) en Darija", description: "Large Language Models (LLM) spécialisés pour le secteur public et académique marocain.", labo: "Laboratoire LISV (FS Fès)", encadrant: "Prof. ZAHRAOUI Reda (HDR)" },
+
+            // MATHÉMATIQUES
+            { id: 4, specialiteId: "math", titre: "Optimisation stochastique et algorithmes prédictifs pour le Big Data", description: "Modélisation mathématique pour l'apprentissage automatique hautement dimensionnel.", labo: "Laboratoire LMA (FS Fès)", encadrant: "Prof. CHRAIBI Omar (HDR)" },
+            { id: 5, specialiteId: "math", titre: "Équations aux dérivées partielles non linéaires appliquées à la mécanique des fluides", description: "Analyse théorique et simulations numériques haute résolution.", labo: "Laboratoire LMA (FS Fès)", encadrant: "Prof. EL KHALIFI Driss (HDR)" },
+
+            // ÉCONOMIE & GESTION
+            { id: 6, specialiteId: "eco", titre: "Impact de la digitalisation des PME marocaines sur la performance financière", description: "Analyse économétrique empirique sur la région Fès-Meknès post-2020.", labo: "Laboratoire LARGESS (FSJES Fès)", encadrant: "Prof. TAZI Rachid (HDR)" },
+            { id: 7, specialiteId: "eco", titre: "Gouvernance bancaire et développement de la Finance Islamique au Maroc", description: "Évaluation de la résilience des fenêtres Participatives face aux chocs économiques.", labo: "Laboratoire LARGESS (FSJES Fès)", encadrant: "Prof. BERRADA Salma (HDR)" },
+            { id: 8, specialiteId: "eco", titre: "Stratégies d'attractivité des investissements directs étrangers (IDE) au Maroc", description: "Analyse du rôle des zones d'accélération industrielle région Fès-Meknès.", labo: "Laboratoire LARGESS (FSJES Fès)", encadrant: "Prof. ESSAADI Mourad (HDR)" },
+
+            // DROIT
+            { id: 9, specialiteId: "droit", titre: "La protection juridique des données à caractère personal face à l'IA", description: "Étude comparative entre le droit marocain (Loi 09-08) et le RGPD européen.", labo: "Laboratoire d'Études Juridiques (FSJES)", encadrant: "Prof. SEFRIOUI Souad (HDR)" },
+            { id: 10, specialiteId: "droit", titre: "La décentralisation administrative et la régionalisation avancée au Maroc", description: "Bilan des compétences transférées aux Collectivités Territoriales.", labo: "Laboratoire d'Études Juridiques (FSJES)", encadrant: "Prof. OUAZZANI Mehdi (HDR)" },
+
+            // ÉTUDES ISLAMIQUES
+            { id: 11, specialiteId: "islam", titre: "المقاصد الشرعية وتطبيقها في النوازل المعاصرة والمعاملات المالية", description: "دراسة تأصيلية تطبيقية في ضوء الفقه المالكي والاجتهاد المغربي.", labo: "مختبر الدراسات الإسلامية والشرعية (كلية الشريعة / الآداب)", encadrant: "Prof. EL HARRAK Mohamed (HDR)" },
+            { id: 12, specialiteId: "islam", titre: "تطور الفكر المقاصدي بالمغرب الأقصى: من الشاطبي إلى العصر الحديث", description: "قراءة في المخطوطات والآثار الفقهية لعلماء فاس.", labo: "مختبر التراث والفكر الإسلامي (FLSH Dhar El Mahraz)", encadrant: "Prof. HAMDAOUI Hassan (HDR)" },
+
+            // ADAB / LITTÉRATURE & LANGUES
+            { id: 13, specialiteId: "adab", titre: "بلاغة الخطاب الإعلامي الرقمي في الصحافة المغربية المعاصرة", description: "تحليل لساني ونقدي لنصوص الإعلام الإلكتروني.", labo: "مختبر اللغويات والدراسات الأدبية (FLSH Dhar El Mahraz)", encadrant: "Prof. BENSLIMANE Tariq (HDR)" },
+            { id: 14, specialiteId: "adab", titre: "Le roman francophone maghrébin face aux mutations identitaires", description: "Analyse poétique et sociocritique des œuvres littéraires contemporaines.", labo: "Laboratoire Langage et Littérature (FLSH Saïs)", encadrant: "Prof. CHAMI Laila (HDR)" },
+
+            // SCIENCES DE L'ÉDUCATION
+            { id: 15, specialiteId: "edu", titre: "L'intégration pédagogique des TICE dans l'enseignement universitaire", description: "Évaluation de l'efficacité des plateformes hybrides (E-learning) à l'USMBA.", labo: "Laboratoire de Didactique et Sciences Éducatives (ENS Fès)", encadrant: "Prof. IDRISSI Youssef (HDR)" },
+            { id: 16, specialiteId: "edu", titre: "Didactique du Français Langue Étrangère (FLE) au cycle secondaire", description: "Analyse des difficultés d'apprentissage et propositions de remédiation.", labo: "Laboratoire Didactique (ENS Fès)", encadrant: "Prof. AKALAY Malika (HDR)" },
+
+            // SCIENCES HUMAINES & SOCIALES
+            { id: 17, specialiteId: "shs", titre: "Sociologie des transformations urbaines dans la Médina de Fès", description: "Impact du programme de réhabilitation sur le tissu social et économique.", labo: "Laboratoire SHS (FLSH Saïs Fès)", encadrant: "Prof. FILALI Ahmed (HDR)" },
+
+            // PHYSIQUE
+            { id: 18, specialiteId: "phys", titre: "Optimisation du rendement des cellules photovoltaïques en couches minces", description: "Caractérisation physique et modélisation des performances sous climat semi-aride.", labo: "Laboratoire Physique des Matériaux (FS Fès)", encadrant: "Prof. SLIMANI Khalid (HDR)" },
+
+            // BIOTECHNOLOGIES
+            { id: 19, specialiteId: "bio", titre: "Valorisation biotechnologique des plantes médicinales de la région Fès-Meknès", description: "Extraction et évaluation des activités antimicrobiennes et antioxydantes.", labo: "Laboratoire LBS (FS Dhar El Mahraz)", encadrant: "Prof. TAZI Kawtar (HDR)" },
+
+            // GÉNIE CIVIL & MATÉRIAUX
+            { id: 20, specialiteId: "genie", titre: "Modélisation comportementale des bétons éco-responsables à base de granulats recyclés", description: "Analyse expérimentale de la durabilité et de la résistance mécanique.", labo: "Laboratoire LIMM (FST Fès)", encadrant: "Prof. CHRAIBI Omar (HDR)" },
+            { id: 21, specialiteId: "genie", titre: "Analyse thermique des structures en terre cuite stabilisée", description: "Optimisation de l'efficacité énergétique des bâtiments région Fès-Meknès.", labo: "Laboratoire LIMM (EST Fès)", encadrant: "Prof. BENCHEIKH Nabil (HDR)" }
           ],
 
           reinscription: {
-            numDoctorant: 'DOC-2024-8849',
+            numDoctorant: "DOC-2024-8849",
             anneeThese: 2
           },
 
           statutDossier: {
-            etat: 'Soumis',
-            apiMessage: 'Dossier transmis via l\'API REST. Contrôle des règles conforme.'
+            etat: "Soumis",
+            apiMessage: "Dossier transmis via l'API REST. Contrôle des règles conforme."
           },
 
           listeCandidatsAdmin: [
-            { id: 1, nom: 'EL MANSARI', prenom: 'Youssef', email: 'youssef.elmansari@usmba.ac.ma', cne: 'N130098765', cin: 'CD789123', diplome: 'Master National', specialite: 'Informatique, IA & Systèmes (LISV)', sujet: 'Application de l\'IA et de l\'OCR dans la dématérialisation des workflows académiques', statut: 'Soumis', numApogee: 'APO-2026-9941', avisCommission: 'Favorable', noteEntretien: '18', dateEntretien: '2026-06-15', remarquesScolarite: 'Dossier complet et retenu.' },
-            { id: 2, nom: 'BENALI', prenom: 'Salma', email: 'salma.benali@usmba.ac.ma', cne: 'USM9982123', cin: 'CB456123', diplome: 'Diplôme d\'Ingénieur', specialite: 'Génie Civil & Matériaux (LIMM)', sujet: 'Modélisation comportementale des bétons éco-responsables', statut: 'En Vérification', numApogee: '', avisCommission: 'En attente', noteEntretien: '', dateEntretien: '', remarquesScolarite: '' }
+            { id: 1, nom: "EL MANSARI", prenom: "Youssef", email: "youssef.elmansari@usmba.ac.ma", cne: "N130098765", cin: "CD789123", diplome: "Master National", specialite: "Informatique, IA & Systèmes Intelligents", sujet: "Application de l'IA et de l'OCR dans la dématérialisation des workflows académiques", statut: "Soumis", numApogee: "APO-2026-9941", avisCommission: "Favorable", noteEntretien: "18", dateEntretien: "2026-06-15", remarquesScolarite: "Dossier complet et retenu." },
+            { id: 2, nom: "BENALI", prenom: "Salma", email: "salma.benali@usmba.ac.ma", cne: "USM9982123", cin: "CB456123", diplome: "Diplôme d'Ingénieur", specialite: "Génie Civil, Industrial & Matériaux", sujet: "Modélisation comportementale des bétons éco-responsables", statut: "En Vérification", numApogee: "", avisCommission: "En attente", noteEntretien: "", dateEntretien: "", remarquesScolarite: "" }
           ]
-        }
+        };
       },
       computed: {
         specialiteSelectionneeObj() {
@@ -736,10 +786,10 @@
       methods: {
         basculerRole(role) {
           this.roleVue = role;
-          if (role === 'admin') {
-            this.ongletActif = 'scolarite';
+          if (role === "admin") {
+            this.ongletActif = "scolarite";
           } else {
-            this.ongletActif = 'premiere';
+            this.ongletActif = "premiere";
           }
         },
 
@@ -795,8 +845,8 @@
         },
 
         soumettreDossierAPI() {
-          this.statutDossier.etat = 'Soumis';
-          this.statutDossier.apiMessage = 'Règles API REST D2-D5 validées ! Candidature enregistrée.';
+          this.statutDossier.etat = "Soumis";
+          this.statutDossier.apiMessage = "Règles API REST D2-D5 validées ! Candidature enregistrée.";
           
           this.listeCandidatsAdmin.unshift({
             id: Date.now(),
@@ -808,22 +858,22 @@
             diplome: this.form.diplome,
             specialite: this.specialiteSelectionneeObj.nom,
             sujet: this.form.sujet,
-            statut: 'Soumis',
-            numApogee: '',
-            avisCommission: 'En attente',
-            noteEntretien: '',
-            dateEntretien: '',
-            remarquesScolarite: ''
+            statut: "Soumis",
+            numApogee: "",
+            avisCommission: "En attente",
+            noteEntretien: "",
+            dateEntretien: "",
+            remarquesScolarite: ""
           });
 
           alert("🚀 Dossier soumis avec succès via l'API REST !");
-          this.ongletActif = 'suivi';
+          this.ongletActif = "suivi";
         },
 
         soumettreReinscription() {
-          this.statutDossier.etat = 'Vérification';
+          this.statutDossier.etat = "Vérification";
           alert(`🔄 Demande de réinscription transmise pour l'année ${this.reinscription.anneeThese} !`);
-          this.ongletActif = 'suivi';
+          this.ongletActif = "suivi";
         },
 
         ouvrirModalScolarite(candidat) {
@@ -843,7 +893,7 @@
           alert("✅ Données administratives et Workflow mis à jour avec succès par la Scolarité !");
         }
       }
-    }).mount('#app');
+    }).mount("#app");
   </script>
 </body>
 </html>
