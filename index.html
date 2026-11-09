@@ -56,7 +56,7 @@
         <div class="flex items-center space-x-4 text-indigo-200 text-[11px]">
           <span>🏛️ CEDoc USMBA Fès</span>
           <span>•</span>
-          <span class="text-emerald-300 font-mono">Module OCR & Workflow Scolarité Actifs</span>
+          <span class="text-emerald-300 font-mono">Module OCR & API REST v4.2 Actifs</span>
         </div>
       </div>
     </div>
@@ -134,9 +134,9 @@
             v-if="roleVue === 'admin'"
             @click="ongletActif = 'scolarite'"
             :class="ongletActif === 'scolarite' ? 'border-purple-600 text-purple-700 font-bold bg-purple-50' : 'border-transparent text-purple-600 hover:text-purple-900 hover:bg-purple-50/50'"
-            class="py-3 px-4 border-b-2 text-xs md:text-sm rounded-xl transition flex items-center space-x-2 whitespace-nowrap animate-pulse">
+            class="py-3 px-4 border-b-2 text-xs md:text-sm rounded-xl transition flex items-center space-x-2 whitespace-nowrap">
             <span class="text-base">⚡</span>
-            <span>Gestion Scolarité & Données Administratives</span>
+            <span>Espace Scolarité & Traitement Admin</span>
           </button>
         </nav>
       </div>
@@ -150,7 +150,7 @@
       <!-- ================================================================= -->
       <main v-if="ongletActif === 'premiere'" class="space-y-6">
         
-        <!-- Stepper Visual Progress Bar -->
+        <!-- Stepper Progress Bar -->
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
           <div class="flex justify-between items-center mb-4">
             <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Avancement du Dossier Candidat</span>
@@ -191,7 +191,7 @@
           <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
             <div>
               <h2 class="text-base md:text-lg font-bold text-slate-900">
-                <span v-if="etapeForm === 1">🪪 Étape 1 : Informations Personnelles & Scan OCR (CIN / Étudiant)</span>
+                <span v-if="etapeForm === 1">🪪 Étape 1 : Auto-remplissage via Scan OCR (Carte CIN / Étudiant)</span>
                 <span v-if="etapeForm === 2">🎓 Étape 2 : Éligibilité du Diplôme d'Accès (Contrôle Règle D2)</span>
                 <span v-if="etapeForm === 3">🎯 Étape 3 : Choix de la Spécialité Académique</span>
                 <span v-if="etapeForm === 4">🔬 Étape 4 : Sélection du Sujet de Thèse (Filtré pour : {{ specialiteSelectionneeObj.nom }})</span>
@@ -202,7 +202,7 @@
 
           <div class="p-6 md:p-8 space-y-6">
 
-            <!-- ÉTAPE 1 : MODULE SCAN OCR -->
+            <!-- ÉTAPE 1 : SCAN OCR -->
             <div v-if="etapeForm === 1" class="space-y-6">
               
               <div class="relative bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-900 text-white p-6 md:p-8 rounded-2xl shadow-xl overflow-hidden border-2 border-indigo-500/50">
@@ -283,7 +283,7 @@
               </div>
             </div>
 
-            <!-- ÉTAPE 2 : DIPLÔME D'ACCÈS (RÈGLE D2) -->
+            <!-- ÉTAPE 2 : DIPLÔME D'ACCÈS -->
             <div v-if="etapeForm === 2" class="space-y-6">
               <div class="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl text-amber-900 text-xs shadow-sm">
                 <p class="font-bold">📜 Règle Réglementaire D2 (Éligibilité du Diplôme) :</p>
@@ -313,7 +313,7 @@
               </div>
             </div>
 
-            <!-- ÉTAPE 3 : CHOIX DE LA SPÉCIALITÉ UNIQUEMENT -->
+            <!-- ÉTAPE 3 : CHOIX DE LA SPÉCIALITÉ -->
             <div v-if="etapeForm === 3" class="space-y-6">
               <div class="p-4 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-900 text-xs">
                 <p class="font-bold">🎯 Étape 3 : Choisissez votre Spécialité Académique :</p>
@@ -343,7 +343,7 @@
               </div>
             </div>
 
-            <!-- ÉTAPE 4 : AFFICHAGE EXCLUSIF DES SUJETS FILTRÉS POUR LA SPÉCIALITÉ CHOISIE -->
+            <!-- ÉTAPE 4 : SUJETS FILTRÉS DE LA SPÉCIALITÉ -->
             <div v-if="etapeForm === 4" class="space-y-6">
               
               <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 text-xs flex justify-between items-center">
@@ -380,7 +380,7 @@
 
             </div>
 
-            <!-- ÉTAPE 5 : PIÈCES JUSTIFICATIVES & SOUMISSION -->
+            <!-- ÉTAPE 5 : PIÈCES & SOUMISSION -->
             <div v-if="etapeForm === 5" class="space-y-6">
 
               <div class="bg-slate-950 text-white p-5 rounded-2xl border border-slate-800 text-xs space-y-2">
@@ -413,7 +413,7 @@
 
           </div>
 
-          <!-- Buttons Navigation Footer -->
+          <!-- Buttons Footer -->
           <div class="bg-slate-50 px-6 py-4 border-t border-slate-200 flex justify-between items-center">
             <button v-if="etapeForm > 1" @click="etapeForm--" class="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 font-bold text-xs rounded-xl">⬅️ Précédent</button>
             <div v-else></div>
@@ -463,8 +463,8 @@
             <span>HTTP 200 OK</span>
           </div>
           <p><span class="text-emerald-400">[SYSTEM API]</span> Moteur de règles du CEDoc... OK</p>
-          <p><span class="text-blue-400">[OCR API]</span> Données civiles injectées depuis la carte... OK</p>
-          <p><span class="text-purple-400">[RULE D2 API]</span> Diplôme d'Accès ({{ form.diplome }}) : <span class="text-emerald-400">✓ CONFORME</span></p>
+          <p><span class="text-blue-400">[OCR API]</span> Données civiles lues et injectées... OK</p>
+          <p><span class="text-purple-400">[RULE D2 API]</span> Éligibilité Diplôme ({{ form.diplome }}) : <span class="text-emerald-400">✓ CONFORME</span></p>
           <p><span class="text-purple-400">[RULE D3/D5 API]</span> Validation Sujet ({{ form.sujet || 'Non sélectionné' }}) : <span class="text-emerald-400">✓ VALIDÉ</span></p>
           <p class="text-amber-300 font-bold pt-1">> Statut API : {{ statutDossier.apiMessage }}</p>
         </div>
@@ -482,7 +482,7 @@
       </main>
 
       <!-- ================================================================= -->
-      <!-- ONGLET 4 : ESPACE SCOLARITÉ / ADMIN (GESTION DES DONNÉES INTERNES)-->
+      <!-- ONGLET 4 : ESPACE SCOLARITÉ / ADMIN (GESTION DONNÉES INTERNES)    -->
       <!-- ================================================================= -->
       <main v-if="ongletActif === 'scolarite' && roleVue === 'admin'" class="space-y-6">
         
@@ -492,7 +492,7 @@
               <span class="bg-purple-500/20 text-purple-300 text-xs px-3 py-1 rounded-full font-bold border border-purple-400/30">Accès Sécurisé Admin</span>
               <h2 class="text-xl md:text-2xl font-black">Espace Administration & Scolarité CEDoc</h2>
             </div>
-            <p class="text-xs text-purple-200 mt-1">Saisie des données administratives internes (Numéro Apogée, Avis Commission, Note, Convocation...)</p>
+            <p class="text-xs text-purple-200 mt-1">Traitement des dossiers et saisie des données administratives internes</p>
           </div>
 
           <div class="flex items-center space-x-3">
@@ -500,11 +500,11 @@
           </div>
         </div>
 
-        <!-- Tableau des Candidatures avec Champs Spécifiques Scolarité -->
+        <!-- Tableau des Candidatures -->
         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
           <div class="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
             <h3 class="font-bold text-slate-900 text-sm">📋 Dossiers Candidates & Traitement Interne Scolarité</h3>
-            <span class="text-xs text-purple-700 font-bold bg-purple-100 px-3 py-1 rounded-full">Données Administratives Réglables</span>
+            <span class="text-xs text-purple-700 font-bold bg-purple-100 px-3 py-1 rounded-full">Données Scolarité Activées</span>
           </div>
 
           <div class="overflow-x-auto">
@@ -527,7 +527,6 @@
                     <span class="block text-[10px] font-normal text-slate-500">CIN: {{ candidat.cin }} | CNE: {{ candidat.cne }}</span>
                   </td>
 
-                  <!-- Champ Spécifique Scolarité : Numéro Apogée -->
                   <td class="p-4 font-mono font-bold text-indigo-700">
                     <span v-if="candidat.numApogee" class="bg-indigo-50 px-2.5 py-1 rounded border border-indigo-200">{{ candidat.numApogee }}</span>
                     <span v-else class="text-amber-600 italic">Non attribué</span>
@@ -538,7 +537,6 @@
                     <span class="text-[10px] text-slate-500 truncate max-w-xs block">{{ candidat.sujet }}</span>
                   </td>
 
-                  <!-- Champ Spécifique Scolarité : Avis Commission -->
                   <td class="p-4 font-bold">
                     <span v-if="candidat.avisCommission === 'Favorable'" class="text-emerald-600">🟢 Favorable</span>
                     <span v-else-if="candidat.avisCommission === 'Défavorable'" class="text-rose-600">🔴 Défavorable</span>
@@ -546,7 +544,6 @@
                     <span v-else class="text-slate-400 italic">En attente</span>
                   </td>
 
-                  <!-- Champ Spécifique Scolarité : Note -->
                   <td class="p-4 font-mono font-bold">
                     {{ candidat.noteEntretien ? candidat.noteEntretien + ' / 20' : '—' }}
                   </td>
@@ -563,7 +560,6 @@
                     </span>
                   </td>
 
-                  <!-- Bouton d'édition des données scolaires -->
                   <td class="p-4 text-center">
                     <button @click="ouvrirModalScolarite(candidat)" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-[11px] shadow">
                       ⚙️ Gérer / Remplir
@@ -588,16 +584,16 @@
 
             <div class="p-6 space-y-4 text-xs">
               <div>
-                <label class="block font-bold text-slate-700 mb-1 uppercase">1. Numéro Apogée Attribué par la Scolarité</label>
+                <label class="block font-bold text-slate-700 mb-1 uppercase">1. Numéro Apogée Attribué</label>
                 <input v-model="candidatSelectionneAdmin.numApogee" type="text" class="w-full p-3 border rounded-xl font-mono font-bold" placeholder="ex: APO-2026-9941" />
               </div>
 
               <div>
-                <label class="block font-bold text-slate-700 mb-1 uppercase">2. Avis de la Commission d'Accès</label>
+                <label class="block font-bold text-slate-700 mb-1 uppercase">2. Avis de la Commission</label>
                 <select v-model="candidatSelectionneAdmin.avisCommission" class="w-full p-3 border rounded-xl font-semibold">
                   <option value="En attente">En attente d'évaluation</option>
                   <option value="Favorable">Favorable (Admis)</option>
-                  <option value="Sous réserve">Sous réserve de complément</option>
+                  <option value="Sous réserve">Sous réserve</option>
                   <option value="Défavorable">Défavorable (Non retenu)</option>
                 </select>
               </div>
@@ -608,7 +604,7 @@
                   <input v-model="candidatSelectionneAdmin.noteEntretien" type="text" class="w-full p-3 border rounded-xl font-mono" placeholder="ex: 17.5" />
                 </div>
                 <div>
-                  <label class="block font-bold text-slate-700 mb-1 uppercase">4. Date Convocation Oral</label>
+                  <label class="block font-bold text-slate-700 mb-1 uppercase">4. Convocation Oral</label>
                   <input v-model="candidatSelectionneAdmin.dateEntretien" type="date" class="w-full p-3 border rounded-xl font-medium" />
                 </div>
               </div>
@@ -625,14 +621,14 @@
               </div>
 
               <div>
-                <label class="block font-bold text-slate-700 mb-1 uppercase">6. Remarques & Observations Scolarité</label>
-                <textarea v-model="candidatSelectionneAdmin.remarquesScolarite" rows="2" class="w-full p-3 border rounded-xl" placeholder="Avis favorable du laboratoire, dossier complet..."></textarea>
+                <label class="block font-bold text-slate-700 mb-1 uppercase">6. Remarques Scolarité</label>
+                <textarea v-model="candidatSelectionneAdmin.remarquesScolarite" rows="2" class="w-full p-3 border rounded-xl" placeholder="Observations internes..."></textarea>
               </div>
             </div>
 
             <div class="bg-slate-50 p-4 border-t border-slate-200 flex justify-end space-x-2">
               <button @click="modalEditeurOuvert = false" class="px-4 py-2 border border-slate-300 rounded-xl font-bold text-xs">Annuler</button>
-              <button @click="sauvegarderAdminData" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-xs shadow">Enregistrer les Modifications</button>
+              <button @click="sauvegarderAdminData" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-xs shadow">Enregistrer</button>
             </div>
           </div>
         </div>
@@ -644,7 +640,7 @@
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 text-xs py-6 mt-auto border-t border-slate-800">
       <div class="max-w-7xl mx-auto px-4 text-center">
-        <p class="font-bold text-slate-200">CEDoc USMBA — Application Web avec Scan OCR & Espace Administration Interne</p>
+        <p class="font-bold text-slate-200">CEDoc USMBA — Application Web Doctorale</p>
         <p class="text-[11px] text-slate-500 mt-1">Conforme à l'Arrêté n° 1371.07 • Vue.js 3 • 2026</p>
       </div>
     </footer>
@@ -670,7 +666,6 @@
           modalEditeurOuvert: false,
           candidatSelectionneAdmin: {},
 
-          // Form Data Candidat
           form: {
             cne: 'N130098765',
             cin: 'CD789123',
@@ -715,9 +710,8 @@
             apiMessage: 'Dossier transmis via l\'API REST. Contrôle des règles conforme.'
           },
 
-          // Candidats f Espace Administration avec Champs Administratifs Spécifiques
           listeCandidatsAdmin: [
-            { id: 1, nom: 'EL MANSARI', prenom: 'Youssef', email: 'youssef.elmansari@usmba.ac.ma', cne: 'N130098765', cin: 'CD789123', diplome: 'Master National', specialite: 'Informatique, IA & Systèmes (LISV)', sujet: 'Application de l\'IA et de l\'OCR dans la dématérialisation des workflows académiques', statut: 'Soumis', numApogee: 'APO-2026-9941', avisCommission: 'Favorable', noteEntretien: '18', dateEntretien: '2026-06-15', remarquesScolarite: 'Dossier complet et retenu par le jury.' },
+            { id: 1, nom: 'EL MANSARI', prenom: 'Youssef', email: 'youssef.elmansari@usmba.ac.ma', cne: 'N130098765', cin: 'CD789123', diplome: 'Master National', specialite: 'Informatique, IA & Systèmes (LISV)', sujet: 'Application de l\'IA et de l\'OCR dans la dématérialisation des workflows académiques', statut: 'Soumis', numApogee: 'APO-2026-9941', avisCommission: 'Favorable', noteEntretien: '18', dateEntretien: '2026-06-15', remarquesScolarite: 'Dossier complet et retenu.' },
             { id: 2, nom: 'BENALI', prenom: 'Salma', email: 'salma.benali@usmba.ac.ma', cne: 'USM9982123', cin: 'CB456123', diplome: 'Diplôme d\'Ingénieur', specialite: 'Génie Civil & Matériaux (LIMM)', sujet: 'Modélisation comportementale des bétons éco-responsables', statut: 'En Vérification', numApogee: '', avisCommission: 'En attente', noteEntretien: '', dateEntretien: '', remarquesScolarite: '' }
           ]
         }
@@ -769,7 +763,7 @@
                 this.form.prenom = "Youssef";
                 this.form.email = "youssef.elmansari@usmba.ac.ma";
                 this.form.telephone = "+212 6 61 23 45 67";
-                alert("✅ Scan OCR Réussi : Informations de la carte extraites !");
+                alert("✅ Scan OCR Réussi : Données civiles remplies !");
               }, 300);
             }
           }, 200);
@@ -802,4 +796,54 @@
 
         soumettreDossierAPI() {
           this.statutDossier.etat = 'Soumis';
-          this.statutDossier.apiMessage
+          this.statutDossier.apiMessage = 'Règles API REST D2-D5 validées ! Candidature enregistrée.';
+          
+          this.listeCandidatsAdmin.unshift({
+            id: Date.now(),
+            nom: this.form.nom,
+            prenom: this.form.prenom,
+            email: this.form.email,
+            cne: this.form.cne,
+            cin: this.form.cin,
+            diplome: this.form.diplome,
+            specialite: this.specialiteSelectionneeObj.nom,
+            sujet: this.form.sujet,
+            statut: 'Soumis',
+            numApogee: '',
+            avisCommission: 'En attente',
+            noteEntretien: '',
+            dateEntretien: '',
+            remarquesScolarite: ''
+          });
+
+          alert("🚀 Dossier soumis avec succès via l'API REST !");
+          this.ongletActif = 'suivi';
+        },
+
+        soumettreReinscription() {
+          this.statutDossier.etat = 'Vérification';
+          alert(`🔄 Demande de réinscription transmise pour l'année ${this.reinscription.anneeThese} !`);
+          this.ongletActif = 'suivi';
+        },
+
+        ouvrirModalScolarite(candidat) {
+          this.candidatSelectionneAdmin = JSON.parse(JSON.stringify(candidat));
+          this.modalEditeurOuvert = true;
+        },
+
+        sauvegarderAdminData() {
+          const idx = this.listeCandidatsAdmin.findIndex(c => c.id === this.candidatSelectionneAdmin.id);
+          if (idx !== -1) {
+            this.listeCandidatsAdmin[idx] = JSON.parse(JSON.stringify(this.candidatSelectionneAdmin));
+            if (this.candidatSelectionneAdmin.cin === this.form.cin) {
+              this.statutDossier.etat = this.candidatSelectionneAdmin.statut;
+            }
+          }
+          this.modalEditeurOuvert = false;
+          alert("✅ Données administratives et Workflow mis à jour avec succès par la Scolarité !");
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
